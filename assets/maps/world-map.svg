@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1200" viewBox="0 0 1600 1200">
+  <rect width="1600" height="1200" fill="#dfe6d6"/>
+  <rect x="20" y="20" width="1560" height="1160" fill="none" stroke="#8a9a7b" stroke-width="4" stroke-dasharray="16 10"/>
+  <text x="800" y="560" font-family="Georgia, serif" font-size="46" fill="#4a5a3e" text-anchor="middle">MAPA DEL MUNDO (placeholder)</text>
+  <text x="800" y="620" font-family="Georgia, serif" font-size="26" fill="#6a7a5e" text-anchor="middle">Sustituye este archivo por tu imagen real</text>
+  <text x="800" y="660" font-family="Georgia, serif" font-size="24" fill="#6a7a5e" text-anchor="middle">assets/maps/world-map.jpg (o actualiza la ruta en js/config.js)</text>
+</svg>

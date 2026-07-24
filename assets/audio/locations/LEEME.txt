@@ -1,0 +1,11 @@
+Pon aquí un archivo de audio corto (mp3 u ogg, idealmente pocos segundos
+o poco más de un minuto, ya que se reproduce en bucle) por cada ubicación
+que quieras que tenga música/ambiente propio.
+
+Ejemplo:
+  assets/audio/locations/torre-del-mago.mp3
+
+Luego en js/locations.js:
+  audio: "assets/audio/locations/torre-del-mago.mp3"
+
+Si una ubicación no debe tener sonido, deja audio: null

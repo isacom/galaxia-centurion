@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1600" viewBox="0 0 1600 1600">
+  <rect width="1600" height="1600" fill="#050512"/>
+  <circle cx="800" cy="800" r="720" fill="#16213a" stroke="#3a4a6a" stroke-width="4"/>
+  <text x="800" y="770" font-family="Georgia, serif" font-size="46" fill="#c9d4e8" text-anchor="middle">VISTA DEL PLANETA (placeholder)</text>
+  <text x="800" y="830" font-family="Georgia, serif" font-size="26" fill="#8a9ac0" text-anchor="middle">Sustituye este archivo por tu imagen real</text>
+  <text x="800" y="870" font-family="Georgia, serif" font-size="24" fill="#8a9ac0" text-anchor="middle">assets/maps/planet-map.jpg (o actualiza la ruta en js/config.js)</text>
+</svg>

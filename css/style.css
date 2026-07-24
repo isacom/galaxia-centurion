@@ -1,0 +1,536 @@
+/*
+ * ESTILOS
+ * -------
+ * Variables en :root arriba del todo para que sea fácil cambiar la paleta
+ * de colores sin tener que buscar por todo el archivo.
+ */
+
+:root {
+  --color-bg: #10141a;
+  --color-topbar: #1c2430;
+  --color-topbar-text: #f0e6d2;
+  --color-accent: #caa23c;
+  --color-accent-dark: #8a6d1f;
+  --color-panel-bg: #1a1712;
+  --color-panel-text: #f2ead8;
+  --color-panel-border: #caa23c;
+  --color-link-btn: #5865f2; /* color de los botones de enlace (Discord, etc.) */
+  --font-title: Georgia, "Times New Roman", serif;
+  --font-body: "Segoe UI", Tahoma, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background: var(--color-bg);
+  font-family: var(--font-body);
+  overflow: hidden;
+}
+
+/* ---------- Barra superior ---------- */
+
+#topbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 56px;
+  background: var(--color-topbar);
+  color: var(--color-topbar-text);
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 0 16px;
+  z-index: 1000;
+  border-bottom: 2px solid var(--color-accent-dark);
+}
+
+#topbar h1 {
+  font-family: var(--font-title);
+  font-size: 1.1rem;
+  margin: 0;
+  white-space: nowrap;
+  color: var(--color-accent);
+}
+
+#breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex: 1;
+  overflow-x: auto;
+}
+
+.crumb {
+  background: none;
+  border: none;
+  color: var(--color-topbar-text);
+  font-size: 0.95rem;
+  cursor: pointer;
+  padding: 4px 6px;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+.crumb:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.crumb:disabled {
+  color: var(--color-accent);
+  cursor: default;
+  font-weight: bold;
+}
+
+.crumb-sep {
+  color: #6a6458;
+}
+
+#legend-toggle {
+  background: var(--color-accent-dark);
+  color: var(--color-topbar-text);
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+
+#legend-toggle:hover {
+  background: var(--color-accent);
+  color: #221a06;
+}
+
+/* ---------- Leyenda ---------- */
+
+#legend {
+  position: fixed;
+  top: 56px;
+  right: 0;
+  background: var(--color-topbar);
+  color: var(--color-topbar-text);
+  width: 260px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.25s ease;
+  z-index: 999;
+  border-bottom-left-radius: 8px;
+}
+
+#legend.open {
+  max-height: 560px;
+  padding: 12px 16px;
+  border: 1px solid var(--color-accent-dark);
+  border-top: none;
+  display: flex;
+  flex-direction: column;
+}
+
+#legend h2 {
+  font-family: var(--font-title);
+  font-size: 1rem;
+  margin: 0 0 8px;
+  color: var(--color-accent);
+  flex-shrink: 0;
+}
+
+#legend-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  overflow-y: auto;
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+#legend-list li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 0;
+  font-size: 0.92rem;
+}
+
+#legend-list img {
+  width: 24px;
+  height: 32px;
+}
+
+.map-back-button {
+  position: fixed;
+  top: 66px;
+  left: 10px;
+  z-index: 1000;
+  background: #fff;
+  border: 2px solid rgba(0, 0, 0, 0.2);
+  background-clip: padding-box;
+  border-radius: 4px;
+  padding: 6px 12px;
+  font-family: var(--font-title);
+  font-size: 0.85rem;
+  color: #1c2430;
+  cursor: pointer;
+  box-shadow: none;
+}
+
+.map-back-button:hover {
+  background: #f4f4f4;
+}
+
+/* ---------- Mapa ---------- */
+
+#map {
+  position: absolute;
+  top: 56px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #05070a;
+}
+
+/*
+ * Para añadir un nuevo estilo de fondo ("bg-tu-estilo"): crea una textura
+ * tileable en assets/maps/tu-estilo-tile.svg, añade aquí una regla
+ * "#map.bg-tu-estilo" siguiendo el mismo patrón, y usa
+ * background: "tu-estilo" en la capa correspondiente de js/config.js.
+ */
+
+#map.bg-starfield {
+  background-color: #05070f;
+  background-image:
+    radial-gradient(ellipse 60% 40% at 20% 25%, rgba(90, 70, 140, 0.25), transparent 60%),
+    radial-gradient(ellipse 50% 35% at 80% 70%, rgba(40, 80, 140, 0.2), transparent 60%),
+    url("../assets/maps/starfield-tile.svg");
+  background-repeat: no-repeat, no-repeat, repeat;
+  background-size: cover, cover, 512px 512px;
+}
+
+#map.bg-desert {
+  background-color: #8f7d55;
+  background-image:
+    radial-gradient(ellipse 70% 50% at 20% 15%, rgba(210, 190, 140, 0.16), transparent 65%),
+    radial-gradient(ellipse 60% 45% at 85% 85%, rgba(30, 22, 14, 0.35), transparent 65%),
+    url("../assets/maps/desert-tile.svg");
+  background-repeat: no-repeat, no-repeat, repeat;
+  background-size: cover, cover, 500px 500px;
+}
+
+#map.bg-alien {
+  background-color: #08070a;
+  background-image:
+    radial-gradient(ellipse 65% 45% at 25% 20%, rgba(155, 92, 255, 0.14), transparent 65%),
+    radial-gradient(ellipse 55% 40% at 80% 80%, rgba(0, 0, 0, 0.55), transparent 65%),
+    url("../assets/maps/alien-tile.svg");
+  background-repeat: no-repeat, no-repeat, repeat;
+  background-size: cover, cover, 600px 600px;
+}
+
+/* ---------- Panel de información ("la pestañita") ---------- */
+
+#info-panel {
+  position: fixed;
+  top: 56px;
+  right: 0;
+  bottom: 0;
+  width: 380px;
+  max-width: 90vw;
+  background: var(--color-panel-bg);
+  color: var(--color-panel-text);
+  border-left: 3px solid var(--color-panel-border);
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+  z-index: 1100;
+  display: flex;
+  flex-direction: column;
+  box-shadow: -8px 0 24px rgba(0, 0, 0, 0.5);
+}
+
+#info-panel.open {
+  transform: translateX(0);
+}
+
+#panel-close {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  background: none;
+  border: none;
+  color: var(--color-panel-text);
+  font-size: 1.6rem;
+  cursor: pointer;
+  line-height: 1;
+  z-index: 2;
+}
+
+#panel-close:hover {
+  color: var(--color-accent);
+}
+
+.panel-gallery {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  background: #000;
+  flex-shrink: 0;
+}
+
+#panel-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.panel-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.45);
+  color: #fff;
+  border: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.panel-arrow:hover {
+  background: rgba(0, 0, 0, 0.7);
+}
+
+#panel-prev {
+  left: 10px;
+}
+
+#panel-next {
+  right: 10px;
+}
+
+.panel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px 0;
+  flex-shrink: 0;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #55503f;
+}
+
+.dot.active {
+  background: var(--color-accent);
+}
+
+.panel-body {
+  padding: 8px 20px 20px;
+  overflow-y: auto;
+}
+
+#panel-name {
+  font-family: var(--font-title);
+  color: var(--color-accent);
+  margin: 0 0 10px;
+  font-size: 1.4rem;
+}
+
+#panel-description {
+  line-height: 1.5;
+  font-size: 0.95rem;
+  margin: 0 0 16px;
+}
+
+#panel-descend {
+  background: var(--color-accent-dark);
+  color: var(--color-panel-text);
+  border: none;
+  padding: 10px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.95rem;
+}
+
+#panel-descend:hover {
+  background: var(--color-accent);
+  color: #221a06;
+}
+
+/* ---------- Botones de enlaces (ej. canales de Discord) ---------- */
+
+.panel-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0 0 16px;
+}
+
+.panel-link-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--color-link-btn, #5865f2);
+  color: #fff;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.panel-link-btn::after {
+  content: "↗";
+}
+
+.panel-link-btn:hover {
+  filter: brightness(1.15);
+}
+
+/* ---------- Iconos de marcador en el mapa (más nítidos) ---------- */
+
+.leaflet-marker-icon {
+  filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.6));
+}
+
+.player-marker-icon {
+  background: none;
+  border: none;
+  position: relative;
+}
+
+.marker-icon-img {
+  width: 36px;
+  height: 48px;
+  display: block;
+}
+
+/* ---------- Chapas de jugadores sobre los iconos ---------- */
+
+.player-badges {
+  position: absolute;
+  bottom: 100%;
+  margin-bottom: 4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 112px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 3px;
+  pointer-events: none;
+}
+
+.player-badge {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.55);
+  color: #fff;
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: bold;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+.player-badge:hover {
+  transform: scale(1.15);
+}
+
+.player-badge img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.player-badge-more {
+  background: #2c2c2a;
+  font-size: 7.5px;
+}
+
+/* ---------- Ampliación de la chapa de un jugador ---------- */
+
+#player-lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.82);
+  z-index: 2000;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 40px;
+}
+
+#player-lightbox.open {
+  display: flex;
+}
+
+#player-lightbox-content {
+  width: min(40vw, 220px);
+  height: min(40vw, 220px);
+  border-radius: 50%;
+  overflow: hidden;
+  border: 4px solid var(--color-accent);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+}
+
+#player-lightbox-content img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.player-lightbox-initial {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-family: var(--font-title);
+  font-size: 4rem;
+  font-weight: bold;
+}
+
+#player-lightbox-name {
+  color: var(--color-panel-text);
+  font-family: var(--font-title);
+  font-size: 1.4rem;
+  margin: 0;
+}
+
+#player-lightbox-close {
+  position: absolute;
+  top: 20px;
+  right: 28px;
+  background: none;
+  border: none;
+  color: var(--color-panel-text);
+  font-size: 2.2rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+#player-lightbox-close:hover {
+  color: var(--color-accent);
+}

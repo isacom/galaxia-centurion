@@ -1,0 +1,12 @@
+Crea aquí una carpeta por cada ubicación (usa el mismo "id" que le pongas
+en js/locations.js) y mete dentro las imágenes de esa ubicación.
+
+Ejemplo:
+  assets/images/locations/torre-del-mago/1.jpg
+  assets/images/locations/torre-del-mago/2.jpg
+
+Luego en js/locations.js:
+  images: [
+    "assets/images/locations/torre-del-mago/1.jpg",
+    "assets/images/locations/torre-del-mago/2.jpg",
+  ]

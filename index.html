@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mapa Interactivo de Centurión</title>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.png" />
+  <link rel="stylesheet" href="vendor/leaflet/leaflet.css" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <header id="topbar">
+    <h1>Mapa de la galaxia</h1>
+    <nav id="breadcrumb" aria-label="Navegación entre capas del mapa"></nav>
+    <button id="legend-toggle" type="button">Leyenda</button>
+  </header>
+
+  <div id="legend">
+    <h2>Tipos de ubicación</h2>
+    <ul id="legend-list"></ul>
+  </div>
+
+  <div id="map"></div>
+  <button id="back-button" type="button" class="map-back-button" style="display:none;"></button>
+
+  <aside id="info-panel" aria-hidden="true">
+    <button id="panel-close" type="button" aria-label="Cerrar">&times;</button>
+
+    <div class="panel-gallery">
+      <button id="panel-prev" class="panel-arrow" type="button" aria-label="Imagen anterior">&#10094;</button>
+      <img id="panel-image" alt="" />
+      <button id="panel-next" class="panel-arrow" type="button" aria-label="Imagen siguiente">&#10095;</button>
+    </div>
+    <div id="panel-dots" class="panel-dots"></div>
+
+    <div class="panel-body">
+      <h2 id="panel-name"></h2>
+      <p id="panel-description"></p>
+      <div id="panel-links" class="panel-links"></div>
+      <button id="panel-descend" type="button" style="display:none;">Explorar interior ↓</button>
+    </div>
+  </aside>
+
+  <div id="player-lightbox" aria-hidden="true">
+    <button id="player-lightbox-close" type="button" aria-label="Cerrar">&times;</button>
+    <div id="player-lightbox-content"></div>
+    <p id="player-lightbox-name"></p>
+  </div>
+
+  <audio id="location-audio" preload="none"></audio>
+
+  <script src="vendor/leaflet/leaflet.js"></script>
+  <script src="js/config.js"></script>
+  <script src="js/locations.js"></script>
+  <script src="js/players.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
