@@ -42,7 +42,7 @@
  */
 
 const PLAYERS = [
-  { name: "Yoshua", locationId: "taller", avatar: "assets/images/players/iconoYoshua.png" },
+  { name: "Yoshua", locationId: "taller", avatar: "assets/images/players/IconoYoshua.png" },
   { name: "Filianore", locationId: "sanctuary", avatar: "assets/images/players/IconoFilianore.png" },
   { name: "Unknown", locationId: "motel-sunset", avatar: "assets/images/players/IconoUnknown.png" },
   { name: "Stann", locationId: "opportunity", avatar: "assets/images/players/IconoStann.png"},
