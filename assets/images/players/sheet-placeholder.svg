@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="270" height="480" viewBox="0 0 270 480">
+  <rect width="270" height="480" fill="#241f1a"/>
+  <rect x="8" y="8" width="254" height="464" fill="none" stroke="#6a5c40" stroke-width="2" stroke-dasharray="10 7"/>
+  <circle cx="135" cy="150" r="42" fill="#4a4030"/>
+  <path d="M75,340 C75,255 95,205 135,205 C175,205 195,255 195,340 Z" fill="#4a4030"/>
+  <text x="135" y="410" font-family="Georgia, serif" font-size="17" fill="#cbb987" text-anchor="middle">Sin imagen de cuerpo completo</text>
+  <text x="135" y="435" font-family="Georgia, serif" font-size="13" fill="#8a7d5e" text-anchor="middle">Añade "sheetImage" en players.js</text>
+</svg>

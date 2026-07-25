@@ -44,8 +44,16 @@
 
   <div id="player-lightbox" aria-hidden="true">
     <button id="player-lightbox-close" type="button" aria-label="Cerrar">&times;</button>
-    <div id="player-lightbox-content"></div>
-    <p id="player-lightbox-name"></p>
+    <div class="player-sheet">
+      <div class="player-sheet-header">
+        <div id="player-sheet-icon" class="player-sheet-icon"></div>
+        <h2 id="player-sheet-name"></h2>
+      </div>
+      <div class="player-sheet-body">
+        <div id="player-sheet-image" class="player-sheet-image"></div>
+        <dl id="player-sheet-stats" class="player-sheet-stats"></dl>
+      </div>
+    </div>
   </div>
 
   <audio id="location-audio" preload="none"></audio>

@@ -128,26 +128,76 @@
     return html;
   }
 
-  // ---------- Ampliar la chapa de un jugador al pulsarla ----------
+  // ---------- Ficha de personaje al pulsar la chapa de un jugador ----------
 
   const playerLightbox = document.getElementById("player-lightbox");
-  const playerLightboxContent = document.getElementById("player-lightbox-content");
-  const playerLightboxName = document.getElementById("player-lightbox-name");
+  const playerSheetIcon = document.getElementById("player-sheet-icon");
+  const playerSheetImageWrap = document.getElementById("player-sheet-image");
+  const playerSheetName = document.getElementById("player-sheet-name");
+  const playerSheetStats = document.getElementById("player-sheet-stats");
 
-  function openPlayerLightbox(name, avatar, color) {
-    playerLightboxName.textContent = name || "";
-    if (avatar) {
-      playerLightboxContent.innerHTML = '<img src="' + avatar + '" alt="" />';
+  // Imagen que se usa en el recuadro grande 9:16 cuando el jugador no
+  // tiene "sheetImage" puesta todavía. Sustituye este archivo, o cambia
+  // esta ruta, si quieres tu propio placeholder.
+  const PLAYER_SHEET_PLACEHOLDER = "assets/images/players/sheet-placeholder.svg";
+
+  // Campos fijos de la ficha, en el orden en que se muestran. "key" es el
+  // nombre del campo en el objeto del jugador (js/players.js).
+  const PLAYER_SHEET_FIELDS = [
+    { key: "height", label: "Estatura" },
+    { key: "race", label: "Raza" },
+    { key: "gender", label: "Género" },
+    { key: "traits", label: "Rasgos" },
+  ];
+
+  function openPlayerLightbox(player) {
+    playerSheetName.textContent = player.name || "";
+
+    // Icono pequeño de arriba: el mismo avatar (o inicial) que ya se ve
+    // en la chapa del mapa. Es independiente de la imagen grande.
+    if (player.avatar) {
+      playerSheetIcon.innerHTML = '<img src="' + player.avatar + '" alt="" />';
     } else {
-      playerLightboxContent.innerHTML =
+      const color = getPlayerColor(player, 0);
+      playerSheetIcon.innerHTML =
         '<div class="player-lightbox-initial" style="background:' +
         color +
         '">' +
-        getInitial(name) +
+        getInitial(player.name) +
         "</div>";
     }
+
+    // Imagen grande de cuerpo completo (9:16): usa "sheetImage" si existe,
+    // y si no, un placeholder — NUNCA el icono pequeño de arriba.
+    const sheetImage = player.sheetImage || PLAYER_SHEET_PLACEHOLDER;
+    playerSheetImageWrap.innerHTML = '<img src="' + sheetImage + '" alt="" />';
+
+    playerSheetStats.innerHTML = "";
+    PLAYER_SHEET_FIELDS.forEach((field) => {
+      const value = player[field.key];
+      if (!value) return;
+      playerSheetStats.appendChild(buildPlayerStatRow(field.label, value));
+    });
+    // Campos "opcionales": cualquier extra que el jugador quiera añadir,
+    // ej. extra: [{ label: "Ocupación", value: "Cazador de bóvedas" }]
+    (player.extra || []).forEach((item) => {
+      if (!item || !item.value) return;
+      playerSheetStats.appendChild(buildPlayerStatRow(item.label, item.value));
+    });
+
     playerLightbox.classList.add("open");
     playerLightbox.setAttribute("aria-hidden", "false");
+  }
+
+  function buildPlayerStatRow(label, value) {
+    const dt = document.createElement("dt");
+    dt.textContent = label;
+    const dd = document.createElement("dd");
+    dd.textContent = value;
+    const fragment = document.createDocumentFragment();
+    fragment.appendChild(dt);
+    fragment.appendChild(dd);
+    return fragment;
   }
 
   function closePlayerLightbox() {
@@ -169,11 +219,10 @@
       const badge = e.target.closest(".player-badge");
       if (!badge || badge.classList.contains("player-badge-more")) return;
       e.stopPropagation();
-      openPlayerLightbox(
-        badge.dataset.playerName,
-        badge.dataset.playerAvatar,
-        badge.dataset.playerColor
+      const player = (typeof PLAYERS !== "undefined" ? PLAYERS : []).find(
+        (p) => p.name === badge.dataset.playerName
       );
+      if (player) openPlayerLightbox(player);
     },
     true
   );
