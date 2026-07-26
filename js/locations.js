@@ -531,7 +531,7 @@ const LOCATIONS = [
     name: "Ayuntamiento Sanctuary",
     shortDescription:
       "Principal base de operaciones y comunicaciones de los Invasores Carmesíes, además de contar con barracones y diversas salas para distintos fines.",
-    images: ["assets/images/locations/sanctuary/FondoAyuntamiento.jpg"],
+    images: ["assets/images/locations/Sanctuary/FondoAyuntamiento.jpg"],
     links: [
       { label: "Hilo ayuntamiento", url: "https://discord.com/channels/1103353173567094947/1357100617704669215" },
       { label: "Barracones generales", url: "https://discord.com/channels/1103353173567094947/1364732309873623040" },
@@ -552,7 +552,7 @@ const LOCATIONS = [
     name: "Plaza Sanctuary",
     shortDescription:
       "Zona central de todo Sanctuary donde transita gran parte de su población, además en dicho centro se puede observar como un obelisco tecnológico de alguna clase.",
-    images: ["assets/images/locations/sanctuary/FondoPlaza.jpg"],
+    images: ["assets/images/locations/Sanctuary/FondoPlaza.jpg"],
     audio: "assets/audio/locations/SoundEffect.mp3",
     links: [
       { label: "Hilo de las calles", url: "https://discord.com/channels/1103353173567094947/1461882131474157599" },
@@ -567,7 +567,7 @@ const LOCATIONS = [
     name: "Exterior Sanctuary",
     shortDescription:
       "Zona árida y desértica, poco hay que ver, solo algunos cadáveres siendo devorados por los cuervos.",
-    images: ["assets/images/locations/sanctuary/FondoExterior.jpg"],
+    images: ["assets/images/locations/Sanctuary/FondoExterior.jpg"],
     audio: "assets/audio/locations/SoundEffect.mp3",
     links: [
       { label: "Hilo exterior", url: "https://discord.com/channels/1103353173567094947/1512824738379206806" },
@@ -582,7 +582,7 @@ const LOCATIONS = [
     name: "Armeria de Marcus",
     shortDescription:
       "Armeria de Sanctuary que cuenta con todo tipo de armas y de municiones. Si deseas algo que mate, probablemente Marcus lo tenga.",
-    images: ["assets/images/locations/sanctuary/FondoArmeria.jpg"],
+    images: ["assets/images/locations/Sanctuary/FondoArmeria.jpg"],
     audio: "assets/audio/locations/SoundEffect.mp3",
     links: [
       { label: "Hilo armeria", url: "https://discord.com/channels/1103353173567094947/1357100383654248629" },
@@ -598,7 +598,7 @@ const LOCATIONS = [
     name: "Clínica del Doctor Zed",
     shortDescription:
       "El Doctor Zed es infame por su 'curiosa' forma de tratar a sus pacientes, pese a sus tratos hace milagros con su medicina. Y además de ello pone a la venta diversos farmacos.",
-    images: ["assets/images/locations/sanctuary/FondoClinica.jpg"],
+    images: ["assets/images/locations/Sanctuary/FondoClinica.jpg"],
     audio: "assets/audio/locations/SoundEffect.mp3",
     links: [
       { label: "Hilo clínica", url: "https://discord.com/channels/1103353173567094947/1357100454592643212" },
@@ -613,7 +613,7 @@ const LOCATIONS = [
     name: "Bar de Mad Moxxi",
     shortDescription:
       "Uno de los lugares más visitados en toda Pandora, y no me refiero a la entrepierna de su dueña, aquí se goza de muy buen trato a los clientes con diversos platos para comer y distintas bebidas para mayor deleite ante la vista de las camareras. Y es buen lugar para conversar y cotillear.",
-    images: ["assets/images/locations/sanctuary/FondoBar.jpg"],
+    images: ["assets/images/locations/Sanctuary/FondoBar.jpg"],
     audio: "assets/audio/locations/SoundEffect.mp3",
     links: [
       { label: "Hilo bar", url: "https://discord.com/channels/1103353173567094947/1357100336153886934" },
@@ -628,7 +628,7 @@ const LOCATIONS = [
     name: "Taller de Scooter",
     shortDescription:
       "Uno de los mejores talleres de todo el planeta, cosa que no es muy díficil debido a la falta de competencia, aquí en el taller se cuenta con un gran servicio para reparación y tuneo de vehículos, tanto terrestres como naves.",
-    images: ["assets/images/locations/sanctuary/FondoTaller.jpg"],
+    images: ["assets/images/locations/Sanctuary/FondoTaller.jpg"],
     audio: "assets/audio/locations/SoundEffect.mp3",
     links: [
       { label: "Hilo taller", url: "https://discord.com/channels/1103353173567094947/1357101235190108384" },

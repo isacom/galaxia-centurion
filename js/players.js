@@ -36,8 +36,8 @@
  * en la ficha (no hace falta rellenarlos todos).
  *   sheetImage -> ruta a una imagen de cuerpo completo (formato vertical,
  *                 ideal 9:16, ej. 720x1280) para la ficha del personaje.
- *                 Si no la pones, se usa "avatar" en su lugar (o la
- *                 inicial de color si tampoco hay avatar).
+ *                 Si no la pones, se muestra un placeholder (el icono
+ *                 pequeño de la cabecera es independiente y no cambia).
  *                 Ejemplo: sheetImage: "assets/images/players/fichas/yoshua.png"
  *   height     -> estatura, como texto libre. Ejemplo: height: "1,85 m"
  *   race       -> raza/especie. Ejemplo: race: "Humano"
@@ -53,6 +53,11 @@
  *                     { label: "Ocupación", value: "Mecánico" },
  *                     { label: "Facción", value: "Invasores Carmesíes" },
  *                   ]
+ *   sound      -> (opcional) ruta a un audio corto (mp3/ogg) que suena al
+ *                 abrir la ficha de este jugador (un pequeño jingle, una
+ *                 frase de su voz, etc.). Se detiene solo al cerrar la
+ *                 ficha. Si no lo pones, no suena nada.
+ *                 Ejemplo: sound: "assets/audio/players/yoshua.mp3"
  *
  * Puedes tener tantos jugadores como quieras aquí, pero por icono solo se
  * mostrarán como mucho 10 chapas a la vez: si en una misma ubicación (o

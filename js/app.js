@@ -28,6 +28,7 @@
   const breadcrumb = document.getElementById("breadcrumb");
   const legendList = document.getElementById("legend-list");
   const backButton = document.getElementById("back-button");
+  const playerAudio = document.getElementById("player-sound");
 
   // ---------- Jugadores sobre los iconos ----------
 
@@ -185,6 +186,8 @@
       playerSheetStats.appendChild(buildPlayerStatRow(item.label, item.value));
     });
 
+    playAudioOn(playerAudio, player.sound);
+
     playerLightbox.classList.add("open");
     playerLightbox.setAttribute("aria-hidden", "false");
   }
@@ -203,6 +206,7 @@
   function closePlayerLightbox() {
     playerLightbox.classList.remove("open");
     playerLightbox.setAttribute("aria-hidden", "true");
+    stopAudioOn(playerAudio);
   }
 
   document.getElementById("player-lightbox-close").addEventListener("click", closePlayerLightbox);
@@ -483,11 +487,11 @@
 
   // ---------- Audio ----------
 
-  function playAudio(src) {
-    stopAudio();
+  function playAudioOn(el, src) {
+    stopAudioOn(el);
     if (!src) return;
-    state.audio.src = src;
-    const playPromise = state.audio.play();
+    el.src = src;
+    const playPromise = el.play();
     if (playPromise && playPromise.catch) {
       playPromise.catch((err) => {
         console.warn("No se pudo reproducir el audio (" + src + "):", err.message);
@@ -495,11 +499,19 @@
     }
   }
 
+  function stopAudioOn(el) {
+    if (!el.paused) el.pause();
+    el.currentTime = 0;
+    el.removeAttribute("src");
+    el.load();
+  }
+
+  function playAudio(src) {
+    playAudioOn(state.audio, src);
+  }
+
   function stopAudio() {
-    if (!state.audio.paused) state.audio.pause();
-    state.audio.currentTime = 0;
-    state.audio.removeAttribute("src");
-    state.audio.load();
+    stopAudioOn(state.audio);
   }
 
   // ---------- Leyenda de iconos ----------
