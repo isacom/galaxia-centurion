@@ -486,14 +486,14 @@ html, body {
   display: flex;
   flex-direction: column;
   gap: 18px;
-  max-width: 640px;
-  max-height: 100%;
+  width: min(640px, 92vw);
+  height: min(560px, 85vh);
   background: var(--color-panel-bg);
   border: 2px solid var(--color-panel-border);
   border-radius: 12px;
   padding: 24px;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
-  overflow-y: auto;
+  overflow: hidden;
 }
 
 .player-sheet-header {
@@ -521,8 +521,10 @@ html, body {
 
 .player-sheet-body {
   display: flex;
-  align-items: stretch;
+  align-items: flex-start;
   gap: 24px;
+  flex: 1 1 auto;
+  min-height: 0;
 }
 
 .player-sheet-image {
@@ -563,13 +565,37 @@ html, body {
 
 .player-sheet-stats {
   flex: 1 1 auto;
+  align-self: stretch;
   min-width: 180px;
+  min-height: 0;
   color: var(--color-panel-text);
   display: grid;
   grid-template-columns: auto 1fr;
   align-content: start;
   gap: 8px 16px;
   margin: 0;
+  overflow-y: auto;
+  padding-right: 10px;
+  /* Firefox */
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-accent-dark) transparent;
+}
+
+.player-sheet-stats::-webkit-scrollbar {
+  width: 8px;
+}
+
+.player-sheet-stats::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.player-sheet-stats::-webkit-scrollbar-thumb {
+  background: var(--color-accent-dark);
+  border-radius: 4px;
+}
+
+.player-sheet-stats::-webkit-scrollbar-thumb:hover {
+  background: var(--color-accent);
 }
 
 .player-sheet-stats dt {
@@ -613,9 +639,11 @@ html, body {
 
   .player-sheet-image {
     width: min(50vw, 200px);
+    flex-shrink: 0;
   }
 
   .player-sheet-stats {
     text-align: left;
+    width: 100%;
   }
 }

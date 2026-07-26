@@ -67,13 +67,32 @@
 const PLAYERS = [
   { name: "Yoshua", locationId: "taller", avatar: "assets/images/players/IconoYoshua.png"},
 
-  { name: "Filianore", locationId: "sanctuary", avatar: "assets/images/players/IconoFilianore.png" },
+  { name: "Filianore Oneiros", locationId: "sanctuary", avatar: "assets/images/players/IconoFilianore.png",
+    color: "#f9edbf",
+    sheetImage: "assets/images/players/FotoFilianore.jpg",
+    height: "1,81m",
+    race: "¿Humano?",
+    gender: "Mujer",
+    traits: "Es alta, de cabello rubio platinado y belleza etérea, Lleva una venda cubriendo sus ojos debido a la pérdida de su vista a manos de un combate del pasado, el color de estos fue azul zafiro actualmente lucen apagados y vacios.",
+    extra: [
+      { label: "Edad", value: "Entre los 19 a 23 años aparentes, podría tener milenios debido al encapsulamiento de carbono." },
+      { label: "Fuerza", value: "Oscuro potencialmente, Luminoso estable, [desconocido]." },
+      { label: "Personalidad", value: "Serena, tranquila, movimientos refinados, palabras suaves como una nota de canción, presencia cálida y gentileza sumada a nobleza en cada postura." },
+    ]
+  },
 
   { name: "Unknown", locationId: "motel-sunset", avatar: "assets/images/players/IconoUnknown.png" },
 
   { name: "Stann", locationId: "opportunity", avatar: "assets/images/players/IconoStann.png"},
 
-  { name: "Delsin", locationId: "highlands", avatar: "assets/images/players/IconoDelsin.png" },
+  { name: "Delsin", locationId: "highlands", avatar: "assets/images/players/IconoDelsin.png",
+    color: "#ce800b",
+    sheetImage: "assets/images/players/FotoDelsin.jpg",
+    height: "1,78m",
+    race: "Humano",
+    gender: "Hombre",
+    traits: "Pelo castaño corto y ligeramente despeinado, cubierto generalmente por un gorro. Posee facciones marcadas, con una complexión atlética y definida. Cuenta con tatuajes en el brazo izquierdo y una cadena enrollada al derecho." 
+  },
 
   { name: "Elise", locationId: "sanctuary", avatar: "assets/images/players/IconoElise.png",
     color: "#0e8ed2",
@@ -81,12 +100,33 @@ const PLAYERS = [
     height: "1,60m",
     race: "Humano",
     gender: "Mujer",
-    traits: "Mujer de rubios cabellos y ojos azules. Desde lejos puede verse que posee prótesis repartidas por el cuerpo, pero manteniendo su belleza característica." 
+    traits: "Mujer de rubios cabellos y ojos azules. Desde lejos puede verse que posee prótesis repartidas por el cuerpo, pero manteniendo su belleza característica."
   },
 
-  { name: "Amelia", locationId: "bar", avatar: "assets/images/players/IconoAmelia.png" },
+  { name: "Amelia", locationId: "bar", avatar: "assets/images/players/IconoAmelia.png",
+    color: "#860cab",
+    sheetImage: "assets/images/players/FotoAmelia.jpg",
+    height: "1,71m",
+    race: "Humano",
+    gender: "Mujer",
+    traits: "Heterocromía (verde y cian), pecas, pelo morado.",
+    extra: [
+      { label: "Karma", value: "Neutral luminoso" },
+      { label: "Facción", value: "Invasores Carmesíes, Orden Jedi" },
+    ]
+   },
 
-  { name: "Ayax", locationId: "highlands", avatar: "assets/images/players/IconoAyax.png", },
+  { name: "Ayax", locationId: "highlands", avatar: "assets/images/players/IconoAyax.png",
+    color: "#7a0800",
+    sheetImage: "assets/images/players/FotoAyax.jpg",
+    height: "1.75m",
+    race: "Saiyajin",
+    gender: "Hombre",
+    traits: "Es un hombre adulto de complexión atlética y musculosa, con varias marcas y cicatrices por todo su cuerpo. Tiene un tono de piel bronceado u oscuro. Sus facciones son muy afiladas, acompañadas de ojos oscuros que casi siempre muestran una expresión severa, fría o arrogante. Además posee cabello negro y erizado que apunta en varias direcciones hacia arriba.",
+    extra: [
+      { label: "Detalles extras", value: "A simple vista destacan dos elementos clave, un pendiente de color verde con bordes dorados en su oreja izquierda y un anillo dorado con una gema de color rojizo en el dedo anular de su mano derecha." },
+    ]
+   },
 
   { name: "Viper", locationId: "ayuntamiento", avatar: "assets/images/players/IconoViper.png" },
 
