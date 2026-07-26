@@ -70,9 +70,10 @@
  */
 
 const PLAYERS = [
-  { name: "Yoshua", locationId: "taller", avatar: "assets/images/players/IconoYoshua.png"},
+  { name: "Yoshua", locationId: "taller", avatar: "assets/images/players/IconoYoshua.png", sound: "assets/audio/player.mp3",},
 
   { name: "Filianore Oneiros", locationId: "sanctuary", avatar: "assets/images/players/IconoFilianore.png",
+    sound: "assets/audio/player.mp3",
     color: "#f9edbf",
     sheetImage: "assets/images/players/FotoFilianore.jpg",
     height: "1,81m",
@@ -86,11 +87,12 @@ const PLAYERS = [
     ]
   },
 
-  { name: "Unknown", locationId: "motel-sunset", avatar: "assets/images/players/IconoUnknown.png" },
+  { name: "Unknown", locationId: "motel-sunset", avatar: "assets/images/players/IconoUnknown.png", sound: "assets/audio/player.mp3",},
 
-  { name: "Stann", locationId: "opportunity", avatar: "assets/images/players/IconoStann.png"},
+  { name: "Stann", locationId: "opportunity", avatar: "assets/images/players/IconoStann.png", sound: "assets/audio/player.mp3",},
 
   { name: "Delsin", locationId: "highlands", avatar: "assets/images/players/IconoDelsin.png",
+    sound: "assets/audio/player.mp3",
     color: "#ce800b",
     sheetImage: "assets/images/players/FotoDelsin.jpg",
     height: "1,78m",
@@ -99,7 +101,8 @@ const PLAYERS = [
     traits: "Pelo castaño corto y ligeramente despeinado, cubierto generalmente por un gorro. Posee facciones marcadas, con una complexión atlética y definida. Cuenta con tatuajes en el brazo izquierdo y una cadena enrollada al derecho." 
   },
 
-  { name: "Elise", locationId: "sanctuary", avatar: "assets/images/players/IconoElise.png",
+  { name: "Elise", locationId: "sanctuary", avatar: "assets/images/players/IconoElise.png", 
+    sound: "assets/audio/player.mp3",
     color: "#0e8ed2",
     sheetImage: "assets/images/players/FotoElise.jpg",
     height: "1,60m",
@@ -109,6 +112,7 @@ const PLAYERS = [
   },
 
   { name: "Amelia", locationId: "bar", avatar: "assets/images/players/IconoAmelia.png",
+    sound: "assets/audio/player.mp3",
     color: "#860cab",
     sheetImage: "assets/images/players/FotoAmelia.jpg",
     height: "1,71m",
@@ -122,6 +126,7 @@ const PLAYERS = [
    },
 
   { name: "Ayax", locationId: "highlands", avatar: "assets/images/players/IconoAyax.png",
+    sound: "assets/audio/player.mp3",
     color: "#7a0800",
     sheetImage: "assets/images/players/FotoAyax.jpg",
     height: "1.75m",
@@ -133,13 +138,13 @@ const PLAYERS = [
     ]
    },
 
-  { name: "Viper", locationId: "ayuntamiento", avatar: "assets/images/players/IconoViper.png" },
+  { name: "Viper", locationId: "ayuntamiento", avatar: "assets/images/players/IconoViper.png",sound: "assets/audio/player.mp3", },
 
-  { name: "Lama", locationId: "highlands", avatar: "assets/images/players/IconoLama.png" },
+  { name: "Lama", locationId: "highlands", avatar: "assets/images/players/IconoLama.png", sound: "assets/audio/player.mp3", },
 
-  { name: "Merik", locationId: "highlands", avatar: "assets/images/players/IconoMerik.png" },
+  { name: "Merik", locationId: "highlands", avatar: "assets/images/players/IconoMerik.png", sound: "assets/audio/player.mp3", },
 
-  { name: "Novek", locationId: "highlands", avatar: "assets/images/players/IconoNovek.png" },
+  { name: "Novek", locationId: "highlands", avatar: "assets/images/players/IconoNovek.png", sound: "assets/audio/player.mp3",},
 
-  { name: "Valkyr", locationId: "highlands", avatar: "assets/images/players/IconoValkyr.png" },
+  { name: "Valkyr", locationId: "highlands", avatar: "assets/images/players/IconoValkyr.png", sound: "assets/audio/player.mp3", },
 ];
