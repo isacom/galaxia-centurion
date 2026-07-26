@@ -6,17 +6,18 @@
  */
 
 :root {
-  --color-bg: #10141a;
-  --color-topbar: #1c2430;
-  --color-topbar-text: #f0e6d2;
-  --color-accent: #caa23c;
-  --color-accent-dark: #8a6d1f;
-  --color-panel-bg: #1a1712;
-  --color-panel-text: #f2ead8;
-  --color-panel-border: #caa23c;
+  --color-bg: #060b14;
+  --color-topbar: #0d1a2b;
+  --color-topbar-text: #d8ecff;
+  --color-accent: #4fc3f7;
+  --color-accent-dark: #1c5d85;
+  --color-panel-bg: #0b131f;
+  --color-panel-text: #dbeeff;
+  --color-panel-border: #4fc3f7;
+  --color-contrast-text: #041018; /* texto oscuro sobre fondos de acento claro */
   --color-link-btn: #5865f2; /* color de los botones de enlace (Discord, etc.) */
-  --font-title: Georgia, "Times New Roman", serif;
-  --font-body: "Segoe UI", Tahoma, sans-serif;
+  --font-title: "Orbitron", "Trebuchet MS", Arial, sans-serif;
+  --font-body: "Exo 2", "Segoe UI", Tahoma, sans-serif;
 }
 
 * {
@@ -88,7 +89,7 @@ html, body {
 }
 
 .crumb-sep {
-  color: #6a6458;
+  color: #3d5f7a;
 }
 
 #legend-toggle {
@@ -104,7 +105,7 @@ html, body {
 
 #legend-toggle:hover {
   background: var(--color-accent);
-  color: #221a06;
+  color: var(--color-contrast-text);
 }
 
 /* ---------- Leyenda ---------- */
@@ -174,13 +175,13 @@ html, body {
   padding: 6px 12px;
   font-family: var(--font-title);
   font-size: 0.85rem;
-  color: #1c2430;
+  color: var(--color-contrast-text);
   cursor: pointer;
   box-shadow: none;
 }
 
 .map-back-button:hover {
-  background: #f4f4f4;
+  background: #e8f4ff;
 }
 
 /* ---------- Mapa ---------- */
@@ -325,7 +326,7 @@ html, body {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: #55503f;
+  background: #2c4256;
 }
 
 .dot.active {
@@ -362,7 +363,7 @@ html, body {
 
 #panel-descend:hover {
   background: var(--color-accent);
-  color: #221a06;
+  color: var(--color-contrast-text);
 }
 
 /* ---------- Botones de enlaces (ej. canales de Discord) ---------- */
@@ -534,7 +535,7 @@ html, body {
   border-radius: 8px;
   overflow: hidden;
   border: 3px solid var(--color-accent);
-  background: #241f1a;
+  background: var(--color-panel-bg);
 }
 
 .player-sheet-image img {
