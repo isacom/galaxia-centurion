@@ -469,11 +469,14 @@ const LOCATIONS = [
     icon: "poi",
     name: "Eridium Blight",
     shortDescription:
-      "Paramos desconocidos, solo se sabe que estan cerca de la cicatriz de Pandora...",
+      "Al Oeste en el mapa de Pandora se encontraría unas tierras próximas a la cicatriz de Pandora que surgió luego de la muerte de Bayle El Terrible, más allá de Eridium Blight no habría otro lugar habitable, tormentas eléctricas originadas por la energía y fuerza desbordándose de la corteza de Pandora hacían que fuera imposible adentrarse más.",
     images: [
       "assets/images/locations/Eridium/FondoEridium1.jpg",
       "assets/images/locations/Eridium/FondoEridium2.jpg",
       "assets/images/locations/Eridium/FondoEridium3.jpg",
+    ],
+    links: [
+      { label: "Hilo de Eridium Blight", url: "https://discord.com/channels/1103353173567094947/1530707554311606483" },
     ],
     audio: "assets/audio/locations/SoundEffect.mp3",
   },
