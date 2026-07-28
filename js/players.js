@@ -70,7 +70,16 @@
  */
 
 const PLAYERS = [
-  { name: "Yoshua", locationId: "taller", avatar: "assets/images/players/IconoYoshua.png", sound: "assets/audio/player.mp3",},
+  { name: "Yoshua", locationId: "taller", avatar: "assets/images/players/IconoYoshua.png", sound: "assets/audio/player.mp3",
+    sound: "assets/audio/player.mp3",
+    color: "#50511f",
+    sheetImage: "assets/images/players/FotoYoshua.jpg",
+    height: "1,55m",
+    race: "Humano",
+    gender: "Hombre",
+    traits: "Cabeza Afeitada, Barba de candado Estilizada y con un clip de pelo  sobresaliendo ligeramente de ella, Narizon." 
+  
+  },
 
   { name: "Filianore Oneiros", locationId: "sanctuary", avatar: "assets/images/players/IconoFilianore.png",
     sound: "assets/audio/player.mp3",
