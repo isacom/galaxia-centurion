@@ -92,7 +92,7 @@ html, body {
   color: #3d5f7a;
 }
 
-#legend-toggle {
+#npc-toggle {
   background: var(--color-accent-dark);
   color: var(--color-topbar-text);
   border: none;
@@ -103,14 +103,14 @@ html, body {
   white-space: nowrap;
 }
 
-#legend-toggle:hover {
+#npc-toggle:hover {
   background: var(--color-accent);
   color: var(--color-contrast-text);
 }
 
-/* ---------- Leyenda ---------- */
+/* ---------- Listado de personajes (NPCs) ---------- */
 
-#legend {
+#npc-legend {
   position: fixed;
   top: 56px;
   right: 0;
@@ -124,7 +124,7 @@ html, body {
   border-bottom-left-radius: 8px;
 }
 
-#legend.open {
+#npc-legend.open {
   max-height: 560px;
   padding: 12px 16px;
   border: 1px solid var(--color-accent-dark);
@@ -133,7 +133,7 @@ html, body {
   flex-direction: column;
 }
 
-#legend h2 {
+#npc-legend h2 {
   font-family: var(--font-title);
   font-size: 1rem;
   margin: 0 0 8px;
@@ -141,26 +141,77 @@ html, body {
   flex-shrink: 0;
 }
 
-#legend-list {
+#npc-legend-list {
   list-style: none;
   margin: 0;
   padding: 0;
+  padding-right: 6px;
   overflow-y: auto;
+  scrollbar-gutter: stable;
   flex: 1 1 auto;
   min-height: 0;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-accent-dark) transparent;
 }
 
-#legend-list li {
+#npc-legend-list::-webkit-scrollbar {
+  width: 8px;
+}
+
+#npc-legend-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+#npc-legend-list::-webkit-scrollbar-thumb {
+  background: var(--color-accent-dark);
+  border-radius: 4px;
+}
+
+#npc-legend-list::-webkit-scrollbar-thumb:hover {
+  background: var(--color-accent);
+}
+
+.npc-legend-item {
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 6px 0;
+  padding: 6px 4px;
   font-size: 0.92rem;
+  border-radius: 6px;
+  cursor: pointer;
 }
 
-#legend-list img {
-  width: 24px;
-  height: 32px;
+.npc-legend-item:hover,
+.npc-legend-item:focus-visible {
+  background: rgba(255, 255, 255, 0.08);
+  outline: none;
+}
+
+.npc-legend-icon {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 1px solid var(--color-accent-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-accent-dark);
+}
+
+.npc-legend-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.npc-legend-initial {
+  font-family: var(--font-title);
+  font-size: 0.8rem;
+  font-weight: bold;
+  color: var(--color-topbar-text);
 }
 
 .map-back-button {
@@ -256,7 +307,31 @@ html, body {
   transform: translateX(0);
 }
 
-#panel-close {
+/* ---------- Panel de un NPC (a la izquierda) ---------- */
+
+#npc-panel {
+  position: fixed;
+  top: 56px;
+  left: 0;
+  bottom: 0;
+  width: 380px;
+  max-width: 90vw;
+  background: var(--color-panel-bg);
+  color: var(--color-panel-text);
+  border-right: 3px solid var(--color-panel-border);
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+  z-index: 1100;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 8px 0 24px rgba(0, 0, 0, 0.5);
+}
+
+#npc-panel.open {
+  transform: translateX(0);
+}
+
+.panel-close-btn {
   position: absolute;
   top: 8px;
   right: 10px;
@@ -269,7 +344,7 @@ html, body {
   z-index: 2;
 }
 
-#panel-close:hover {
+.panel-close-btn:hover {
   color: var(--color-accent);
 }
 
@@ -281,7 +356,23 @@ html, body {
   flex-shrink: 0;
 }
 
-#panel-image {
+.npc-panel-gallery {
+  position: relative;
+  width: min(50vw, 220px);
+  aspect-ratio: 9 / 16;
+  margin: 0 auto 12px;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 3px solid var(--color-accent);
+  background: var(--color-panel-bg);
+  flex-shrink: 0;
+}
+
+.npc-panel-name {
+  text-align: center;
+}
+
+.panel-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -338,17 +429,74 @@ html, body {
   overflow-y: auto;
 }
 
-#panel-name {
+/* Scrollbar fina y a juego con el tema, para la descripción del NPC.
+   scrollbar-gutter: stable reserva siempre el hueco de la barra (aunque no
+   haga falta scroll), así el contenido no se mueve al pasar de un NPC con
+   descripción larga a uno con descripción corta. */
+#npc-panel .panel-body {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-accent-dark) transparent;
+  scrollbar-gutter: stable;
+}
+
+#npc-panel .panel-body::-webkit-scrollbar {
+  width: 8px;
+}
+
+#npc-panel .panel-body::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+#npc-panel .panel-body::-webkit-scrollbar-thumb {
+  background: var(--color-accent-dark);
+  border-radius: 4px;
+}
+
+#npc-panel .panel-body::-webkit-scrollbar-thumb:hover {
+  background: var(--color-accent);
+}
+
+.panel-title {
   font-family: var(--font-title);
   color: var(--color-accent);
   margin: 0 0 10px;
   font-size: 1.4rem;
 }
 
-#panel-description {
+.panel-desc {
   line-height: 1.5;
   font-size: 0.95rem;
   margin: 0 0 16px;
+}
+
+.panel-stats {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 6px 14px;
+  margin: 0 0 16px;
+  font-size: 0.9rem;
+}
+
+.panel-stats dt {
+  color: var(--color-accent);
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+.panel-stats dd {
+  margin: 0;
+}
+
+.npc-faction-value {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.npc-faction-icon {
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
 }
 
 #panel-descend {

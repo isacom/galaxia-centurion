@@ -100,3 +100,28 @@ const ICONS = {
   wolf: { file: "assets/icons/wolf.svg", label: "¿?" },
   vault: { file: "assets/icons/vault.png", label: "Cámara" },
 };
+
+/*
+ * FACCIONES
+ * ---------
+ * ESTO ES OPCIONAL: la forma más directa de poner el icono de la facción
+ * de un NPC es el campo "factionIcon" en su propio objeto, en
+ * js/npcs.js (ahí pones tú mismo la ruta a tu icono, sin tocar nada
+ * aquí). Este registro FACTIONS es solo un atajo para cuando varios NPCs
+ * comparten facción: asocia el NOMBRE de una facción (tal cual lo
+ * escribas en el campo "faction" de un NPC) con el icono de su símbolo,
+ * así no repites la ruta en cada NPC de esa facción. Si un NPC tiene
+ * "factionIcon" puesto, este registro se ignora para él.
+ *
+ * Ejemplo:
+ *   "Hyperion": { icon: "assets/icons/factions/hyperion.svg" },
+ *
+ * Si un NPC usa una facción que no está aquí ni tiene "factionIcon", se
+ * muestra igualmente su nombre, con un icono de marcador de posición
+ * genérico en vez de dar error.
+ */
+const FACTIONS = {
+  "Ejemplo Facción": { icon: "assets/icons/factions/placeholder.svg" },
+};
+
+const FACTION_ICON_PLACEHOLDER = "assets/icons/factions/placeholder.svg";

@@ -19,32 +19,47 @@
   <header id="topbar">
     <h1>Mapa de la galaxia</h1>
     <nav id="breadcrumb" aria-label="Navegación entre capas del mapa"></nav>
-    <button id="legend-toggle" type="button">Leyenda</button>
+    <button id="npc-toggle" type="button">Personajes</button>
   </header>
 
-  <div id="legend">
-    <h2>Tipos de ubicación</h2>
-    <ul id="legend-list"></ul>
+  <div id="npc-legend">
+    <h2>Personajes del mundo</h2>
+    <ul id="npc-legend-list"></ul>
   </div>
 
   <div id="map"></div>
   <button id="back-button" type="button" class="map-back-button" style="display:none;"></button>
 
   <aside id="info-panel" aria-hidden="true">
-    <button id="panel-close" type="button" aria-label="Cerrar">&times;</button>
+    <button id="panel-close" class="panel-close-btn" type="button" aria-label="Cerrar">&times;</button>
 
     <div class="panel-gallery">
       <button id="panel-prev" class="panel-arrow" type="button" aria-label="Imagen anterior">&#10094;</button>
-      <img id="panel-image" alt="" />
+      <img id="panel-image" class="panel-image" alt="" />
       <button id="panel-next" class="panel-arrow" type="button" aria-label="Imagen siguiente">&#10095;</button>
     </div>
     <div id="panel-dots" class="panel-dots"></div>
 
     <div class="panel-body">
-      <h2 id="panel-name"></h2>
-      <p id="panel-description"></p>
+      <h2 id="panel-name" class="panel-title"></h2>
+      <p id="panel-description" class="panel-desc"></p>
       <div id="panel-links" class="panel-links"></div>
       <button id="panel-descend" type="button" style="display:none;">Explorar interior ↓</button>
+    </div>
+  </aside>
+
+  <aside id="npc-panel" aria-hidden="true">
+    <button id="npc-panel-close" class="panel-close-btn" type="button" aria-label="Cerrar">&times;</button>
+
+    <div class="panel-body">
+      <h2 id="npc-panel-name" class="panel-title npc-panel-name"></h2>
+
+      <div class="npc-panel-gallery">
+        <img id="npc-panel-image" class="panel-image" alt="" />
+      </div>
+
+      <dl id="npc-panel-stats" class="panel-stats"></dl>
+      <p id="npc-panel-description" class="panel-desc"></p>
     </div>
   </aside>
 
@@ -64,11 +79,14 @@
 
   <audio id="location-audio" preload="none"></audio>
   <audio id="player-sound" preload="none"></audio>
+  <audio id="npc-sound" preload="none"></audio>
+  <audio id="ui-sound" preload="none"></audio>
 
   <script src="vendor/leaflet/leaflet.js"></script>
   <script src="js/config.js"></script>
   <script src="js/locations.js"></script>
   <script src="js/players.js"></script>
+  <script src="js/npcs.js"></script>
   <script src="js/app.js"></script>
 </body>
 </html>

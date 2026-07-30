@@ -26,9 +26,22 @@
   const panelDescend = document.getElementById("panel-descend");
   const panelLinks = document.getElementById("panel-links");
   const breadcrumb = document.getElementById("breadcrumb");
-  const legendList = document.getElementById("legend-list");
+  const npcLegendList = document.getElementById("npc-legend-list");
   const backButton = document.getElementById("back-button");
   const playerAudio = document.getElementById("player-sound");
+  const npcAudio = document.getElementById("npc-sound");
+  const uiAudio = document.getElementById("ui-sound");
+
+  // Efectos de sonido genéricos de interfaz (no dependen de una ubicación,
+  // jugador o NPC en concreto). Cambia estas rutas si quieres otros sonidos.
+  const UI_OPEN_SOUND = "assets/audio/player.mp3";
+  const UI_CLOSE_SOUND = "assets/audio/close.mp3";
+
+  const npcPanel = document.getElementById("npc-panel");
+  const npcPanelName = document.getElementById("npc-panel-name");
+  const npcPanelStats = document.getElementById("npc-panel-stats");
+  const npcPanelDesc = document.getElementById("npc-panel-description");
+  const npcPanelImg = document.getElementById("npc-panel-image");
 
   // ---------- Jugadores sobre los iconos ----------
 
@@ -204,9 +217,11 @@
   }
 
   function closePlayerLightbox() {
+    const wasOpen = playerLightbox.classList.contains("open");
     playerLightbox.classList.remove("open");
     playerLightbox.setAttribute("aria-hidden", "true");
     stopAudioOn(playerAudio);
+    if (wasOpen) playAudioOn(uiAudio, UI_CLOSE_SOUND);
   }
 
   document.getElementById("player-lightbox-close").addEventListener("click", closePlayerLightbox);
@@ -266,7 +281,10 @@
         zoomControl: false,
       });
 
-      state.map.on("click", closePanel);
+      state.map.on("click", () => {
+        closePanel();
+        closeNpcPanel();
+      });
     } else {
       if (state.imageLayer) state.map.removeLayer(state.imageLayer);
       if (state.markersLayer) state.map.removeLayer(state.markersLayer);
@@ -389,7 +407,10 @@
 
     if (loc.descendsTo && MAPS[loc.descendsTo]) {
       panelDescend.style.display = "inline-block";
-      panelDescend.onclick = () => loadMap(loc.descendsTo);
+      panelDescend.onclick = () => {
+        playAudioOn(uiAudio, UI_OPEN_SOUND);
+        loadMap(loc.descendsTo);
+      };
     } else {
       panelDescend.style.display = "none";
       panelDescend.onclick = null;
@@ -402,9 +423,11 @@
   }
 
   function closePanel() {
+    const wasOpen = panel.classList.contains("open");
     panel.classList.remove("open");
     panel.setAttribute("aria-hidden", "true");
     stopAudio();
+    if (wasOpen) playAudioOn(uiAudio, UI_CLOSE_SOUND);
   }
 
   function renderImage() {
@@ -449,9 +472,15 @@
       // app (discord://...). Con target="_blank" el navegador abre ESO en
       // una pestaña/contexto nuevo y aparte, así que la pestaña del mapa
       // nunca se toca ni se navega, haga lo que haga ese enlace.
-      btn.href = toDiscordAppLink(link.url) || link.url;
+      const discordHref = toDiscordAppLink(link.url);
+      btn.href = discordHref || link.url;
       btn.target = "_blank";
       btn.rel = "noopener noreferrer";
+      // Solo se reproduce este sonido para enlaces de Discord de verdad
+      // (discordHref no es null); otros enlaces se abren en silencio.
+      if (discordHref || isDiscordUrl(link.url)) {
+        btn.addEventListener("click", () => playAudioOn(uiAudio, UI_OPEN_SOUND));
+      }
       panelLinks.appendChild(btn);
     });
   }
@@ -473,6 +502,20 @@
   // de Discord está instalada, el propio sistema operativo (Universal
   // Links en iOS / App Links en Android) lo abre directamente en la app
   // sin que tengamos que hacer nada especial.
+  // Comprueba si una URL es de Discord (discord.com/discordapp.com), sea cual
+  // sea el dispositivo. Se usa para decidir si suena el efecto de sonido al
+  // pulsar un enlace, incluso en móvil (donde toDiscordAppLink siempre
+  // devuelve null porque ahí no usamos el esquema "discord://").
+  function isDiscordUrl(url) {
+    try {
+      const parsed = new URL(url);
+      const host = parsed.hostname.replace(/^www\./, "");
+      return host === "discord.com" || host === "discordapp.com";
+    } catch (err) {
+      return false;
+    }
+  }
+
   function toDiscordAppLink(url) {
     if (isMobileDevice()) return null;
     try {
@@ -506,6 +549,16 @@
     el.load();
   }
 
+  // En cuanto un audio termina de sonar solo, se suelta del todo (en vez de
+  // dejarlo "pausado al final" cargado en el elemento). Esto evita que
+  // algunos navegadores/móviles, al recuperar el foco de la pestaña pasado
+  // un rato, intenten "reanudar" ese audio y suene otra vez sin que hayas
+  // pulsado nada.
+  function armAutoReset(el) {
+    el.addEventListener("ended", () => stopAudioOn(el));
+  }
+  [state.audio, playerAudio, npcAudio, uiAudio].forEach(armAutoReset);
+
   function playAudio(src) {
     playAudioOn(state.audio, src);
   }
@@ -514,17 +567,108 @@
     stopAudioOn(state.audio);
   }
 
-  // ---------- Leyenda de iconos ----------
+  // ---------- Listado de personajes (NPCs) ----------
 
-  function renderLegend() {
-    legendList.innerHTML = "";
-    Object.keys(ICONS).forEach((key) => {
-      const def = ICONS[key];
+  function renderNpcList() {
+    npcLegendList.innerHTML = "";
+    (typeof NPCS !== "undefined" ? NPCS : []).forEach((npc) => {
       const item = document.createElement("li");
+      item.className = "npc-legend-item";
+      item.tabIndex = 0;
+
+      const iconHtml = npc.avatar
+        ? '<img src="' + npc.avatar + '" alt="" />'
+        : '<span class="npc-legend-initial">' + getInitial(npc.name) + "</span>";
       item.innerHTML =
-        '<img src="' + def.file + '" alt="" /><span>' + def.label + "</span>";
-      legendList.appendChild(item);
+        '<span class="npc-legend-icon">' + iconHtml + "</span><span>" + npc.name + "</span>";
+
+      item.addEventListener("click", () => openNpcPanel(npc));
+      item.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          openNpcPanel(npc);
+        }
+      });
+      npcLegendList.appendChild(item);
     });
+  }
+
+  // ---------- Panel de un NPC (a la izquierda) ----------
+
+  function openNpcPanel(npc) {
+    npcPanelName.textContent = npc.name || "";
+
+    if (npc.image) {
+      npcPanelImg.style.display = "block";
+      npcPanelImg.src = npc.image;
+    } else {
+      npcPanelImg.removeAttribute("src");
+      npcPanelImg.style.display = "none";
+    }
+
+    // Especialización y facción van encima, la descripción se queda
+    // siempre al final del todo.
+    npcPanelStats.innerHTML = "";
+    if (npc.specialization) {
+      npcPanelStats.appendChild(buildPlayerStatRow("Especialización", npc.specialization));
+    }
+    if (npc.faction) {
+      npcPanelStats.appendChild(buildFactionStatRow(npc));
+    }
+
+    npcPanelDesc.textContent = npc.shortDescription || "";
+
+    playAudioOn(npcAudio, npc.sound);
+
+    npcPanel.classList.add("open");
+    npcPanel.setAttribute("aria-hidden", "false");
+  }
+
+  // Fila "Facción" de la ficha de un NPC: el nombre de la facción con el
+  // icono de su símbolo al lado. El icono sale de (en este orden):
+  //   1. npc.factionIcon, si lo has puesto en ese NPC en concreto.
+  //   2. El registro FACTIONS de js/config.js, buscando por el nombre
+  //      exacto de npc.faction (útil si varios NPCs comparten facción).
+  //   3. Un icono genérico de marcador de posición, si no hay ninguno.
+  function buildFactionStatRow(npc) {
+    const dt = document.createElement("dt");
+    dt.textContent = "Facción";
+
+    const dd = document.createElement("dd");
+    dd.className = "npc-faction-value";
+
+    const icon = document.createElement("img");
+    icon.className = "npc-faction-icon";
+    icon.alt = "";
+    icon.src = getFactionIcon(npc);
+    dd.appendChild(icon);
+
+    const label = document.createElement("span");
+    label.textContent = npc.faction;
+    dd.appendChild(label);
+
+    const fragment = document.createDocumentFragment();
+    fragment.appendChild(dt);
+    fragment.appendChild(dd);
+    return fragment;
+  }
+
+  function getFactionIcon(npc) {
+    if (npc.factionIcon) return npc.factionIcon;
+    const factions = typeof FACTIONS !== "undefined" ? FACTIONS : {};
+    const def = factions[npc.faction];
+    if (def && def.icon) return def.icon;
+    return typeof FACTION_ICON_PLACEHOLDER !== "undefined"
+      ? FACTION_ICON_PLACEHOLDER
+      : "assets/icons/factions/placeholder.svg";
+  }
+
+  function closeNpcPanel() {
+    const wasOpen = npcPanel.classList.contains("open");
+    npcPanel.classList.remove("open");
+    npcPanel.setAttribute("aria-hidden", "true");
+    stopAudioOn(npcAudio);
+    if (wasOpen) playAudioOn(uiAudio, UI_CLOSE_SOUND);
   }
 
   // ---------- Eventos de UI ----------
@@ -533,14 +677,18 @@
   document.getElementById("panel-prev").addEventListener("click", () => showNextImage(-1));
   document.getElementById("panel-next").addEventListener("click", () => showNextImage(1));
 
-  document.getElementById("legend-toggle").addEventListener("click", () => {
-    document.getElementById("legend").classList.toggle("open");
+  document.getElementById("npc-toggle").addEventListener("click", () => {
+    const nowOpen = document.getElementById("npc-legend").classList.toggle("open");
+    if (nowOpen) playAudioOn(uiAudio, UI_OPEN_SOUND);
   });
+
+  document.getElementById("npc-panel-close").addEventListener("click", closeNpcPanel);
 
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape") {
       closePanel();
       closePlayerLightbox();
+      closeNpcPanel();
     }
     if (e.key === "ArrowLeft" && panel.classList.contains("open")) showNextImage(-1);
     if (e.key === "ArrowRight" && panel.classList.contains("open")) showNextImage(1);
@@ -548,6 +696,6 @@
 
   // ---------- Arranque ----------
 
-  renderLegend();
+  renderNpcList();
   loadMap(DEFAULT_MAP);
 })();
