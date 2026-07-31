@@ -528,8 +528,8 @@ const LOCATIONS = [
   {
     id: "ayuntamiento",
     map: "sanctuary",
-    x: 2200,
-    y: 750,
+    x: 1400,
+    y: 450,
     icon: "poi",
     name: "Ayuntamiento Sanctuary",
     shortDescription:
@@ -549,8 +549,8 @@ const LOCATIONS = [
   {
     id: "plaza",
     map: "sanctuary",
-    x: 2200,
-    y: 1750,
+    x: 1400,
+    y: 1100,
     icon: "poi",
     name: "Plaza Sanctuary",
     shortDescription:
@@ -564,8 +564,8 @@ const LOCATIONS = [
   {
     id: "exterior",
     map: "sanctuary",
-    x: 4200,
-    y: 2750,
+    x: 1900,
+    y: 2100,
     icon: "poi",
     name: "Exterior Sanctuary",
     shortDescription:
@@ -579,8 +579,8 @@ const LOCATIONS = [
   {
     id: "armeria",
     map: "sanctuary",
-    x: 4000,
-    y: 1250,
+    x: 2550,
+    y: 800,
     icon: "gunshop",
     name: "Armeria de Marcus",
     shortDescription:
@@ -595,8 +595,8 @@ const LOCATIONS = [
   {
     id: "clinica",
     map: "sanctuary",
-    x: 1000,
-    y: 1600,
+    x: 600,
+    y: 1050,
     icon: "infirmary",
     name: "Clínica del Doctor Zed",
     shortDescription:
@@ -610,8 +610,8 @@ const LOCATIONS = [
   {
     id: "bar",
     map: "sanctuary",
-    x: 3200,
-    y: 2600,
+    x: 2100,
+    y: 1650,
     icon: "bar",
     name: "Bar de Mad Moxxi",
     shortDescription:
@@ -625,8 +625,8 @@ const LOCATIONS = [
   {
     id: "taller",
     map: "sanctuary",
-    x: 900,
-    y: 2300,
+    x: 550,
+    y: 1550,
     icon: "garage",
     name: "Taller de Scooter",
     shortDescription:
