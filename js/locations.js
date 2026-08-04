@@ -620,6 +620,7 @@ const LOCATIONS = [
     audio: "assets/audio/locations/SoundEffect.mp3",
     links: [
       { label: "Hilo bar", url: "https://discord.com/channels/1103353173567094947/1357100336153886934" },
+      { label: "Trastienda del bar", url: "https://discord.com/channels/1103353173567094947/1533843463576223865" },
     ],
   },
   {
