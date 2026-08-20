@@ -70,7 +70,7 @@
  */
 
 const PLAYERS = [
-  { name: "Yoshua", locationId: "taller", avatar: "assets/images/players/IconoYoshua.png", sound: "assets/audio/player.mp3",
+  { name: "Yoshua", locationId: "the-dust", avatar: "assets/images/players/IconoYoshua.png", sound: "assets/audio/player.mp3",
     sound: "assets/audio/player.mp3",
     color: "#50511f",
     sheetImage: "assets/images/players/FotoYoshua.jpg",
@@ -110,7 +110,7 @@ const PLAYERS = [
     traits: "Pelo castaño corto y ligeramente despeinado, cubierto generalmente por un gorro. Posee facciones marcadas, con una complexión atlética y definida. Cuenta con tatuajes en el brazo izquierdo y una cadena enrollada al derecho." 
   },
 
-  { name: "Elise Bernadeth", locationId: "bar", avatar: "assets/images/players/IconoElise.png", 
+  { name: "Elise Bernadeth", locationId: "the-dust", avatar: "assets/images/players/IconoElise.png", 
     sound: "assets/audio/player.mp3",
     color: "#0e8ed2",
     sheetImage: "assets/images/players/FotoElise.jpg",
