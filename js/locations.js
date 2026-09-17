@@ -186,7 +186,7 @@ const LOCATIONS = [
     map: "world",
     x: 750,
     y: 550,
-    icon: "city",
+    icon: "landmark",
     name: "Junkertown",
     shortDescription:
       "Ciudad al borde del desierto de The Dust, alrededor de la zona hay muchas cabañas campestres para granjeros y ramaderos. En el interior se alzan murallas gigantes hechas de metal y chatarra donde en su interior hay toda clase de actividades esperadas en un planeta como Pandora.",
@@ -441,6 +441,8 @@ const LOCATIONS = [
       "Antigua base de Hyperion usada anteriormente como punto estratégico para el despliegue de tropas y de artillería antiaerrea que servía como bloqueo planetario al sector de Pandora, no obstante ahora solo quedan ruinas y cadaveres en este lugar.",
     images: [
       "assets/images/locations/BaseHyperion/FondoBase1.jpg",
+      "assets/images/locations/BaseHyperion/FondoBase2.jpg",
+      "assets/images/locations/BaseHyperion/FondoBase3.jpg",
     ],
     links: [
       { label: "Hilo de la base", url: "https://discord.com/channels/1103353173567094947/1546628409688330291" },
