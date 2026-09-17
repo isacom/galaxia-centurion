@@ -70,7 +70,7 @@
  */
 
 const PLAYERS = [
-  { name: "Yoshua", locationId: "the-dust", avatar: "assets/images/players/IconoYoshua.png", sound: "assets/audio/player.mp3",
+  { name: "Yoshua", locationId: "junkertown", avatar: "assets/images/players/IconoYoshua.png", sound: "assets/audio/player.mp3",
     sound: "assets/audio/player.mp3",
     color: "#50511f",
     sheetImage: "assets/images/players/FotoYoshua.jpg",
@@ -96,11 +96,11 @@ const PLAYERS = [
     ]
   },
 
-  { name: "Unknown", locationId: "motel-sunset", avatar: "assets/images/players/IconoUnknown.png", sound: "assets/audio/player.mp3",},
+  { name: "Unknown", locationId: "junkertown", avatar: "assets/images/players/IconoUnknown.png", sound: "assets/audio/player.mp3",},
 
-  { name: "Stann", locationId: "opportunity", avatar: "assets/images/players/IconoStann.png", sound: "assets/audio/player.mp3",},
+  { name: "Stann", locationId: "highlands", avatar: "assets/images/players/IconoStann.png", sound: "assets/audio/player.mp3",},
 
-  { name: "Delsin Rowe", locationId: "highlands", avatar: "assets/images/players/IconoDelsin.png",
+  { name: "Delsin Rowe", locationId: "base", avatar: "assets/images/players/IconoDelsin.png",
     sound: "assets/audio/player.mp3",
     color: "#ce800b",
     sheetImage: "assets/images/players/FotoDelsin.jpg",
@@ -110,7 +110,7 @@ const PLAYERS = [
     traits: "Pelo castaño corto y ligeramente despeinado, cubierto generalmente por un gorro. Posee facciones marcadas, con una complexión atlética y definida. Cuenta con tatuajes en el brazo izquierdo y una cadena enrollada al derecho." 
   },
 
-  { name: "Elise Bernadeth", locationId: "the-dust", avatar: "assets/images/players/IconoElise.png", 
+  { name: "Elise Bernadeth", locationId: "junkertown", avatar: "assets/images/players/IconoElise.png", 
     sound: "assets/audio/player.mp3",
     color: "#0e8ed2",
     sheetImage: "assets/images/players/FotoElise.jpg",
@@ -134,7 +134,7 @@ const PLAYERS = [
     ]
    },
 
-  { name: "Ayax", locationId: "highlands", avatar: "assets/images/players/IconoAyax.png",
+  { name: "Ayax", locationId: "base", avatar: "assets/images/players/IconoAyax.png",
     sound: "assets/audio/player.mp3",
     color: "#7a0800",
     sheetImage: "assets/images/players/FotoAyax.jpg",
@@ -149,11 +149,11 @@ const PLAYERS = [
 
   { name: "Viper", locationId: "ayuntamiento", avatar: "assets/images/players/IconoViper.png",sound: "assets/audio/player.mp3", },
 
-  { name: "Lama", locationId: "highlands", avatar: "assets/images/players/IconoLama.png", sound: "assets/audio/player.mp3", },
+  { name: "Lama", locationId: "base", avatar: "assets/images/players/IconoLama.png", sound: "assets/audio/player.mp3", },
 
-  { name: "Merik", locationId: "highlands", avatar: "assets/images/players/IconoMerik.png", sound: "assets/audio/player.mp3", },
+  { name: "Merik", locationId: "base", avatar: "assets/images/players/IconoMerik.png", sound: "assets/audio/player.mp3", },
 
-  { name: "Novek", locationId: "highlands", avatar: "assets/images/players/IconoNovek.png", sound: "assets/audio/player.mp3",},
+  { name: "Novek", locationId: "base", avatar: "assets/images/players/IconoNovek.png", sound: "assets/audio/player.mp3",},
 
-  { name: "Valkyr", locationId: "highlands", avatar: "assets/images/players/IconoValkyr.png", sound: "assets/audio/player.mp3", },
+  { name: "Valkyr", locationId: "base", avatar: "assets/images/players/IconoValkyr.png", sound: "assets/audio/player.mp3", },
 ];

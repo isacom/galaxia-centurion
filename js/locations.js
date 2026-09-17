@@ -189,11 +189,17 @@ const LOCATIONS = [
     icon: "city",
     name: "Junkertown",
     shortDescription:
-      "Por descubrir...",
+      "Ciudad al borde del desierto de The Dust, alrededor de la zona hay muchas cabañas campestres para granjeros y ramaderos. En el interior se alzan murallas gigantes hechas de metal y chatarra donde en su interior hay toda clase de actividades esperadas en un planeta como Pandora.",
     images: [
-      "assets/images/locations/Subsuelo/FondoSubsuelo3.jpg",
+      "assets/images/locations/Junkertown/FondoJunkertown1.jpg",
+      "assets/images/locations/Junkertown/FondoJunkertown2.jpg",
+      "assets/images/locations/Junkertown/FondoJunkertown3.jpg",
+    ],
+    links: [
+      { label: "Hilo de la ciudad", url: "https://discord.com/channels/1103353173567094947/1547792692929634386" },
     ],
     audio: "assets/audio/locations/SoundEffect.mp3",
+    descendsTo: "junkertown",
   },
   {
     id: "beatdown",
@@ -420,6 +426,24 @@ const LOCATIONS = [
     ],
     links: [
       { label: "Hilo de las Highlands", url: "https://discord.com/channels/1103353173567094947/1509242399115706400" },
+      { label: "Caminos de las Highlands", url: "https://discord.com/channels/1103353173567094947/1535243222895435856" },
+    ],
+    audio: "assets/audio/locations/SoundEffect.mp3",
+  },
+  {
+    id: "base",
+    map: "world",
+    x: 1000,
+    y: 1250,
+    icon: "ruins",
+    name: "Base de Hyperion (Destruida)",
+    shortDescription:
+      "Antigua base de Hyperion usada anteriormente como punto estratégico para el despliegue de tropas y de artillería antiaerrea que servía como bloqueo planetario al sector de Pandora, no obstante ahora solo quedan ruinas y cadaveres en este lugar.",
+    images: [
+      "assets/images/locations/BaseHyperion/FondoBase1.jpg",
+    ],
+    links: [
+      { label: "Hilo de la base", url: "https://discord.com/channels/1103353173567094947/1546628409688330291" },
     ],
     audio: "assets/audio/locations/SoundEffect.mp3",
   },
@@ -882,4 +906,129 @@ const LOCATIONS = [
       { label: "Hilo oficinas", url: "https://discord.com/channels/1103353173567094947/1357099893084393662" },
     ],
   },
+
+  // JUNKERTOWN
+
+  {
+    id: "exterior",
+    map: "junkertown",
+    x: 200,
+    y: 500,
+    icon: "poi",
+    name: "Exterior de Junkertown",
+    shortDescription:
+      "Zona exterior de la ciudad en donde se encuentran chozas y casas de madera sencillas donde viven campesinos, mecanicos y ramaderos.",
+    images: [
+      "assets/images/locations/Junkertown/FondoExterior.jpg"  
+    ],
+    audio: "assets/audio/locations/SoundEffect.mp3",
+    links: [
+      { label: "Hilo exterior", url: "https://discord.com/channels/1103353173567094947/1544445494388985877" },
+    ],
+  },
+  {
+    id: "roadhog",
+    map: "junkertown",
+    x: 220,
+    y: 920,
+    icon: "garage",
+    name: "Taller de Roadhog",
+    shortDescription:
+      "Por descubrir...",
+    images: [
+      "assets/images/locations/Junkertown/FondoTaller.jpg"  
+    ],
+    audio: "assets/audio/locations/SoundEffect.mp3",
+    links: [
+      { label: "Hilo taller", url: "https://discord.com/channels/1103353173567094947/1550174713974628442" },
+    ],
+  },
+  {
+    id: "tienda",
+    map: "junkertown",
+    x: 550,
+    y: 660,
+    icon: "infirmary",
+    name: "Tienda misticismo / Clínica Jax",
+    shortDescription:
+      "Una pequeña tienda del tarot y demás objetos misticos, en la trastienda se encuentra una clínica de matasanos para implantes de cyberware.",
+    images: [
+      "assets/images/locations/Junkertown/FondoTienda1.jpg",
+      "assets/images/locations/Junkertown/FondoTienda2.jpg"
+    ],
+    audio: "assets/audio/locations/SoundEffect.mp3",
+    links: [
+      { label: "Hilo tienda", url: "https://discord.com/channels/1103353173567094947/1550175808075595927" },
+    ],
+  },
+  {
+    id: "eskorbuto",
+    map: "junkertown",
+    x: 510,
+    y: 480,
+    icon: "bar",
+    name: "Bar Eskorbuto",
+    shortDescription:
+      "Por descubrir...",
+    images: [
+      "assets/images/locations/Junkertown/FondoBar.jpg",
+    ],
+    audio: "assets/audio/locations/SoundEffect.mp3",
+    links: [
+      { label: "Hilo bar", url: "https://discord.com/channels/1103353173567094947/1550178182098063460" },
+    ],
+  },
+  {
+    id: "trono",
+    map: "junkertown",
+    x: 700,
+    y: 180,
+    icon: "poi",
+    name: "Sala del trono",
+    shortDescription:
+      "Por descubrir...",
+    images: [
+      "assets/images/locations/Junkertown/FondoTrono.jpg",
+    ],
+    audio: "assets/audio/locations/SoundEffect.mp3",
+    links: [
+      { label: "Hilo sala del trono", url: "https://discord.com/channels/1103353173567094947/1550179070766088242" },
+    ],
+  },
+  {
+    id: "arena",
+    map: "junkertown",
+    x: 810,
+    y: 280,
+    icon: "dungeon",
+    name: "Arena de Junkertown",
+    shortDescription:
+      "Antigua fabrica abandonada de la DAHL ahora reconvertida en una arena para combates sangrientos, este lugar es vital praa cultura de Junkertown basada en recompensar la fuerza y brutalidad individual.",
+    images: [
+      "assets/images/locations/Junkertown/FondoArena.jpg",
+    ],
+    audio: "assets/audio/locations/SoundEffect.mp3",
+    links: [
+      { label: "Hilo arena", url: "https://discord.com/channels/1103353173567094947/1550179959476330496" },
+    ],
+  },
+  {
+    id: "armeria",
+    map: "junkertown",
+    x: 960,
+    y: 220,
+    icon: "gunshop",
+    name: "Armeria de Junkertown",
+    shortDescription:
+      "Por descubrir...",
+    images: [
+      "assets/images/locations/Subsuelo/FondoSubsuelo3.jpg",    
+    ],
+    audio: "assets/audio/locations/SoundEffect.mp3",
+    links: [
+      { label: "Hilo armeria", url: "https://discord.com/channels/1103353173567094947/1550184240845557931" },
+    ],
+  },
 ];
+
+

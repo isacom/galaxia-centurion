@@ -571,26 +571,69 @@
 
   function renderNpcList() {
     npcLegendList.innerHTML = "";
-    (typeof NPCS !== "undefined" ? NPCS : []).forEach((npc) => {
-      const item = document.createElement("li");
-      item.className = "npc-legend-item";
-      item.tabIndex = 0;
+    const npcs = typeof NPCS !== "undefined" ? NPCS : [];
 
-      const iconHtml = npc.avatar
-        ? '<img src="' + npc.avatar + '" alt="" />'
-        : '<span class="npc-legend-initial">' + getInitial(npc.name) + "</span>";
-      item.innerHTML =
-        '<span class="npc-legend-icon">' + iconHtml + "</span><span>" + npc.name + "</span>";
+    groupNpcsByFaction(npcs).forEach((group) => {
+      const header = document.createElement("li");
+      header.className = "npc-legend-group-header";
+      header.style.setProperty("--faction-color", group.color);
+      header.innerHTML =
+        '<img class="npc-legend-group-icon" src="' + group.icon + '" alt="" />' +
+        "<span>" + group.name + "</span>";
+      npcLegendList.appendChild(header);
 
-      item.addEventListener("click", () => openNpcPanel(npc));
-      item.addEventListener("keydown", (e) => {
-        if (e.key === "Enter" || e.key === " ") {
-          e.preventDefault();
-          openNpcPanel(npc);
-        }
+      group.npcs.forEach((npc) => {
+        const item = document.createElement("li");
+        item.className = "npc-legend-item";
+        item.tabIndex = 0;
+        item.style.setProperty("--faction-color", group.color);
+
+        const iconHtml = npc.avatar
+          ? '<img src="' + npc.avatar + '" alt="" />'
+          : '<span class="npc-legend-initial">' + getInitial(npc.name) + "</span>";
+        item.innerHTML =
+          '<span class="npc-legend-icon">' + iconHtml + "</span><span>" + npc.name + "</span>";
+
+        item.addEventListener("click", () => openNpcPanel(npc));
+        item.addEventListener("keydown", (e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            openNpcPanel(npc);
+          }
+        });
+        npcLegendList.appendChild(item);
       });
-      npcLegendList.appendChild(item);
     });
+  }
+
+  // Agrupa los NPCs por su icono de facción efectivo (ver getFactionIcon),
+  // no por el texto exacto de "faction" -que puede variar entre NPCs de la
+  // misma facción-. El nombre/color de cada grupo salen de FACTION_GROUPS
+  // en config.js; si un NPC usa un icono que no está en ese registro, se
+  // crea igualmente un grupo genérico para él (con su texto de "faction"
+  // como nombre) en vez de perderlo del listado. Los grupos se muestran en
+  // el mismo orden en que aparecen en FACTION_GROUPS, y los no registrados
+  // van al final.
+  function groupNpcsByFaction(npcs) {
+    const configGroups = typeof FACTION_GROUPS !== "undefined" ? FACTION_GROUPS : [];
+    const byIcon = new Map();
+
+    npcs.forEach((npc) => {
+      const icon = getFactionIcon(npc);
+      if (!byIcon.has(icon)) {
+        const known = configGroups.find((g) => g.icon === icon);
+        byIcon.set(icon, {
+          icon: icon,
+          name: known ? known.name : npc.faction || "Sin facción",
+          color: known ? known.color : "#5b6b7a",
+          order: known ? configGroups.indexOf(known) : configGroups.length + byIcon.size,
+          npcs: [],
+        });
+      }
+      byIcon.get(icon).npcs.push(npc);
+    });
+
+    return Array.from(byIcon.values()).sort((a, b) => a.order - b.order);
   }
 
   // ---------- Panel de un NPC (a la izquierda) ----------

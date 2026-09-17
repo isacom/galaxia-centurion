@@ -73,6 +73,13 @@ const MAPS = {
     parent: "world",
     background: "desert",
   },
+  "junkertown": {
+    id: "junkertown",
+    name: "Junkertown",
+    image: "assets/maps/MapaJunkertown.png",
+    parent: "world",
+    background: "desert",
+  },
 };
 
 // Capa que se muestra al abrir la página.
@@ -125,3 +132,31 @@ const FACTIONS = {
 };
 
 const FACTION_ICON_PLACEHOLDER = "assets/icons/factions/placeholder.svg";
+
+/*
+ * GRUPOS DEL LISTADO "PERSONAJES"
+ * --------------------------------
+ * El listado de NPCs (arriba a la derecha) los separa en bloques según
+ * su icono de facción (el mismo que se calcula para cada NPC: primero
+ * su "factionIcon", si no el registro FACTIONS de arriba). Se agrupa
+ * por ICONO y no por el texto exacto de "faction" porque varios NPCs
+ * pueden compartir facción pero escribir el campo distinto (ej.
+ * "Invasores Carmesíes" y "Invasores Carmesíes, Los Tajos" comparten
+ * icono, así que caen en el mismo bloque).
+ *
+ * Cada entrada de aquí decide el NOMBRE del bloque, su ICONO (para la
+ * cabecera del grupo) y su COLOR (para el fondo de cabecera y de cada
+ * NPC de ese grupo en el listado). Añade una entrada por cada icono de
+ * assets/icons/factions/ que uses. Si un NPC usa un icono que no está
+ * aquí, se crea igualmente un grupo para él (usando su campo "faction"
+ * como nombre y un color gris genérico), así nunca se pierde ningún
+ * NPC del listado.
+ */
+const FACTION_GROUPS = [
+  { icon: "assets/icons/factions/carmesies.png", name: "Invasores Carmesíes", color: "#b3122a" },
+  { icon: "assets/icons/factions/hyperion.png", name: "Hyperion", color: "#c9a227" },
+  { icon: "assets/icons/factions/torgue.png", name: "Empresas Torgue", color: "#d9622a" },
+  { icon: "assets/icons/factions/junkertown.png", name: "Junkertown", color: "#7c8a2e" },
+  { icon: "assets/icons/factions/flynt.png", name: "Bandidos de Flynt", color: "#6b3fa0" },
+  { icon: "assets/icons/factions/neutral.png", name: "Sin facción / Desconocida", color: "#5b6b7a" },
+];

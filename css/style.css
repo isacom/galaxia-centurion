@@ -171,6 +171,35 @@ html, body {
   background: var(--color-accent);
 }
 
+/* Cabecera de cada bloque de facción dentro del listado de Personajes.
+   El color viene del grupo (ver FACTION_GROUPS en config.js) a través de
+   la variable --faction-color, puesta por JS en cada <li>. */
+.npc-legend-group-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 14px 0 6px;
+  padding-bottom: 4px;
+  font-family: var(--font-title);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--faction-color, var(--color-accent));
+  border-bottom: 1px solid var(--faction-color, var(--color-accent-dark));
+}
+
+.npc-legend-group-header:first-child {
+  margin-top: 0;
+}
+
+.npc-legend-group-icon {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+
 .npc-legend-item {
   display: flex;
   align-items: center;
@@ -179,11 +208,13 @@ html, body {
   font-size: 0.92rem;
   border-radius: 6px;
   cursor: pointer;
+  background: color-mix(in srgb, var(--faction-color, transparent) 18%, transparent);
+  border-left: 3px solid var(--faction-color, transparent);
 }
 
 .npc-legend-item:hover,
 .npc-legend-item:focus-visible {
-  background: rgba(255, 255, 255, 0.08);
+  background: color-mix(in srgb, var(--faction-color, var(--color-accent)) 34%, transparent);
   outline: none;
 }
 
