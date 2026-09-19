@@ -912,7 +912,7 @@ const LOCATIONS = [
   // JUNKERTOWN
 
   {
-    id: "exterior",
+    id: "exteriorJunk",
     map: "junkertown",
     x: 200,
     y: 500,
@@ -1015,7 +1015,7 @@ const LOCATIONS = [
     ],
   },
   {
-    id: "armeria",
+    id: "armeriaJunk",
     map: "junkertown",
     x: 960,
     y: 220,

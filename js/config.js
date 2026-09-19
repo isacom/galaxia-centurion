@@ -160,3 +160,31 @@ const FACTION_GROUPS = [
   { icon: "assets/icons/factions/flynt.png", name: "Bandidos de Flynt", color: "#6b3fa0" },
   { icon: "assets/icons/factions/neutral.png", name: "Sin facción / Desconocida", color: "#5b6b7a" },
 ];
+
+/*
+ * RELOJ GLOBAL DEL PLANETA
+ * ------------------------
+ * Indicador a la izquierda del título que muestra en qué momento del día
+ * está el planeta (un icono y su nombre). NO sigue la hora real: lo
+ * cambias tú a mano. Para cambiar el momento del día, edita solo
+ * "current" y pon una de estas claves:
+ *
+ *   "amanecer", "manana", "mediodia", "tarde", "atardecer", "noche"
+ *
+ * Después sube los cambios (todos los visitantes verán el nuevo momento
+ * al recargar la página).
+ *
+ * En "phases" puedes cambiar el texto que se muestra de cada momento.
+ * "icon" es el dibujo: sunrise, morning, noon, afternoon, sunset o night.
+ */
+const PLANET_CLOCK = {
+  current: "atardecer",
+  phases: {
+    amanecer: { name: "Amanecer", icon: "sunrise" },
+    manana: { name: "Mañana", icon: "morning" },
+    mediodia: { name: "Mediodía", icon: "noon" },
+    tarde: { name: "Tarde", icon: "afternoon" },
+    atardecer: { name: "Atardecer", icon: "sunset" },
+    noche: { name: "Noche", icon: "night" },
+  },
+};

@@ -737,6 +737,47 @@
     if (e.key === "ArrowRight" && panel.classList.contains("open")) showNextImage(1);
   });
 
+  // ---------- Reloj global del planeta ----------
+
+  const CLOCK_SVG_ATTRS =
+    'viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"';
+  const CLOCK_RAYS =
+    '<path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>';
+  const CLOCK_ICONS = {
+    sunrise:
+      '<svg ' + CLOCK_SVG_ATTRS + '><path d="M6.3 16a5.7 5.7 0 0 1 11.4 0"/><path d="M2 20h20M12 4v3M4.9 9.9l1.4 1.4M19.1 9.9l-1.4 1.4"/><path d="M9.5 5.5 12 3l2.5 2.5"/></svg>',
+    morning:
+      '<svg ' + CLOCK_SVG_ATTRS + '><circle cx="12" cy="12" r="4"/>' + CLOCK_RAYS + "</svg>",
+    noon:
+      '<svg ' + CLOCK_SVG_ATTRS + '><circle cx="12" cy="12" r="5.5" fill="currentColor" fill-opacity="0.25"/>' + CLOCK_RAYS + "</svg>",
+    afternoon:
+      '<svg ' + CLOCK_SVG_ATTRS + '><circle cx="10" cy="10" r="3.5"/><path d="M10 2.5v1.5M3.5 10H2M4.9 4.9l1 1M15.1 4.9l-1 1M4.9 15.1l1-1"/><path d="M8 21h9a3.5 3.5 0 0 0 .4-6.98A5 5 0 0 0 8 15a3 3 0 0 0 0 6z"/></svg>',
+    sunset:
+      '<svg ' + CLOCK_SVG_ATTRS + '><path d="M6.3 16a5.7 5.7 0 0 1 11.4 0"/><path d="M2 20h20M12 4v3M4.9 9.9l1.4 1.4M19.1 9.9l-1.4 1.4"/><path d="M9.5 4.5 12 7l2.5-2.5"/></svg>',
+    night:
+      '<svg ' + CLOCK_SVG_ATTRS + '><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/><path d="M17 4v3M15.5 5.5h3"/></svg>',
+  };
+
+  // Muestra el momento del día elegido a mano en PLANET_CLOCK.current
+  // (js/config.js). No depende de la hora real.
+  function renderPlanetClock() {
+    const cfg = typeof PLANET_CLOCK !== "undefined" ? PLANET_CLOCK : null;
+    const box = document.getElementById("planet-clock");
+    if (!cfg || !box) return;
+    const phase = (cfg.phases || {})[cfg.current];
+    if (!phase) {
+      box.style.display = "none";
+      console.warn("PLANET_CLOCK.current no coincide con ningún momento de PLANET_CLOCK.phases:", cfg.current);
+      return;
+    }
+    document.getElementById("planet-clock-icon").innerHTML = CLOCK_ICONS[phase.icon] || "";
+    document.getElementById("planet-clock-label").textContent = phase.name;
+    box.title = phase.name;
+    box.setAttribute("aria-label", "Momento del día en el planeta: " + phase.name);
+  }
+
+  renderPlanetClock();
+
   // ---------- Arranque ----------
 
   renderNpcList();

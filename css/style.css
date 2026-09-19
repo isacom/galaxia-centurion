@@ -51,6 +51,46 @@ html, body {
   border-bottom: 2px solid var(--color-accent-dark);
 }
 
+/* Reloj global del planeta (a la izquierda del título). */
+#planet-clock {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+  padding: 4px 12px 4px 8px;
+  border: 1px solid var(--color-accent-dark);
+  border-radius: 999px;
+  background: rgba(79, 195, 247, 0.08);
+  font-family: var(--font-title);
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-topbar-text);
+  white-space: nowrap;
+}
+
+.planet-clock-icon {
+  display: flex;
+  width: 24px;
+  height: 24px;
+  color: var(--color-accent);
+}
+
+.planet-clock-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+@media (max-width: 600px) {
+  #planet-clock {
+    padding: 4px;
+  }
+
+  .planet-clock-label {
+    display: none;
+  }
+}
+
 #topbar h1 {
   font-family: var(--font-title);
   font-size: 1.1rem;
