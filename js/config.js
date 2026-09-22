@@ -178,7 +178,7 @@ const FACTION_GROUPS = [
  * "icon" es el dibujo: sunrise, morning, noon, afternoon, sunset o night.
  */
 const PLANET_CLOCK = {
-  current: "atardecer",
+  current: "noche",
   phases: {
     amanecer: { name: "Amanecer", icon: "sunrise" },
     manana: { name: "Mañana", icon: "morning" },
