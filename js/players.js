@@ -98,7 +98,7 @@ const PLAYERS = [
 
   { name: "Unknown", locationId: "exteriorJunk", avatar: "assets/images/players/IconoUnknown.png", sound: "assets/audio/player.mp3",},
 
-  { name: "Stann", locationId: "highlands", avatar: "assets/images/players/IconoStann.png", sound: "assets/audio/player.mp3",},
+  { name: "Stann", locationId: "overlook", avatar: "assets/images/players/IconoStann.png", sound: "assets/audio/player.mp3",},
 
   { name: "Delsin Rowe", locationId: "ayuntamiento", avatar: "assets/images/players/IconoDelsin.png",
     sound: "assets/audio/player.mp3",

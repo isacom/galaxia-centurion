@@ -353,8 +353,8 @@ const LOCATIONS = [
   {
     id: "overlook",
     map: "world",
-    x: 600,
-    y: 1000,
+    x: 580,
+    y: 1030,
     icon: "village",
     name: "Overlook",
     shortDescription:
