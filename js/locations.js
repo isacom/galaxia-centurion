@@ -351,6 +351,22 @@ const LOCATIONS = [
     audio: "assets/audio/locations/SoundEffect.mp3",
   },
   {
+    id: "overlook",
+    map: "world",
+    x: 600,
+    y: 1000,
+    icon: "village",
+    name: "Overlook",
+    shortDescription:
+      "Un poblado al borde de un pequeño barranco de las Highlands, dicho poblado está algo anticuado y desatendido con casas destartaladas hechas a base de chatarra y muy poco ambiente. En este poblado viven mayormente mineros y trabajadores de Hyperion bajo condiciones infrahumanas, pero por lo menos tienen un bar llamado Holy Spirits de temática Irlandesa.",
+    images: [
+      "assets/images/locations/Overlook/FondoOverlook1.jpg",
+      "assets/images/locations/Overlook/FondoOverlook2.jpg",
+      "assets/images/locations/Overlook/FondoOverlook3.jpg",
+    ],
+    audio: "assets/audio/locations/SoundEffect.mp3",
+  },
+  {
     id: "¿?",
     map: "world",
     x: 300,
@@ -631,6 +647,7 @@ const LOCATIONS = [
     audio: "assets/audio/locations/SoundEffect.mp3",
     links: [
       { label: "Hilo clínica", url: "https://discord.com/channels/1103353173567094947/1357100454592643212" },
+      { label: "Quirófano", url: "https://discord.com/channels/1103353173567094947/15517554056534467072" },
     ],
   },
   {
@@ -961,6 +978,7 @@ const LOCATIONS = [
     audio: "assets/audio/locations/SoundEffect.mp3",
     links: [
       { label: "Hilo tienda", url: "https://discord.com/channels/1103353173567094947/1550175808075595927" },
+      { label: "CATÁLOGO DE CYBERWARE", url: "https://docs.google.com/document/d/1tWdrbDzqAA1dVV6ncMfh3srDO30ABnxQV_wx8es0fpc/edit?usp=drive_link" },
     ],
   },
   {
