@@ -149,7 +149,7 @@ const PLAYERS = [
 
   { name: "Viper", locationId: "ayuntamiento", avatar: "assets/images/players/IconoViper.png",sound: "assets/audio/player.mp3", },
 
-  { name: "Lama", locationId: "armeria", avatar: "assets/images/players/IconoLama.png", sound: "assets/audio/player.mp3", },
+  { name: "Lama", locationId: "ayuntamiento", avatar: "assets/images/players/IconoLama.png", sound: "assets/audio/player.mp3", },
 
   { name: "Merik", locationId: "clinica", avatar: "assets/images/players/IconoMerik.png", sound: "assets/audio/player.mp3", },
 
