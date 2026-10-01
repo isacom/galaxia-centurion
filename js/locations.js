@@ -583,6 +583,7 @@ const LOCATIONS = [
       { label: "Puesto de mando", url: "https://discord.com/channels/1103353173567094947/1498690431733600346" },
       { label: "Habitación Lilith/Roland", url: "https://discord.com/channels/1103353173567094947/1369587722213134416" },
       { label: "Habitación Filianore", url: "https://discord.com/channels/1103353173567094947/1364732214167736402" },
+      { label: "Habitación Elise/Ariane", url: "https://discord.com/channels/1103353173567094947/1555159565052547163" },
       { label: "Sala de torturas", url: "https://discord.com/channels/1103353173567094947/1460587352777818195" },
 
     ],
