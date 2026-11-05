@@ -70,7 +70,7 @@
  */
 
 const PLAYERS = [
-  { name: "Yoshua", locationId: "exterior", avatar: "assets/images/players/IconoYoshua.png", sound: "assets/audio/player.mp3",
+  { name: "Yoshua", locationId: "exteriorJunk", avatar: "assets/images/players/IconoYoshua.png", sound: "assets/audio/player.mp3",
     sound: "assets/audio/player.mp3",
     color: "#50511f",
     sheetImage: "assets/images/players/FotoYoshua.jpg",
@@ -149,11 +149,11 @@ const PLAYERS = [
 
   { name: "Viper", locationId: "ayuntamiento", avatar: "assets/images/players/IconoViper.png",sound: "assets/audio/player.mp3", },
 
-  { name: "Lama", locationId: "exterior", avatar: "assets/images/players/IconoLama.png", sound: "assets/audio/player.mp3", },
+  { name: "Lama", locationId: "exteriorJunk", avatar: "assets/images/players/IconoLama.png", sound: "assets/audio/player.mp3", },
 
-  { name: "Merik", locationId: "exterior", avatar: "assets/images/players/IconoMerik.png", sound: "assets/audio/player.mp3", },
+  { name: "Merik", locationId: "exteriorJunk", avatar: "assets/images/players/IconoMerik.png", sound: "assets/audio/player.mp3", },
 
-  { name: "Novek", locationId: "exterior", avatar: "assets/images/players/IconoNovek.png", sound: "assets/audio/player.mp3",},
+  { name: "Novek", locationId: "exteriorJunk", avatar: "assets/images/players/IconoNovek.png", sound: "assets/audio/player.mp3",},
 
   { name: "Valkyr", locationId: "clinica", avatar: "assets/images/players/IconoValkyr.png", sound: "assets/audio/player.mp3", },
 ];
