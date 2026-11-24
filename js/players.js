@@ -100,7 +100,7 @@ const PLAYERS = [
 
   { name: "Stann", locationId: "overlook", avatar: "assets/images/players/IconoStann.png", sound: "assets/audio/player.mp3",},
 
-  { name: "Delsin Rowe", locationId: "roadhog", avatar: "assets/images/players/IconoDelsin.png",
+  { name: "Delsin Rowe", locationId: "eskorbuto", avatar: "assets/images/players/IconoDelsin.png",
     sound: "assets/audio/player.mp3",
     color: "#ce800b",
     sheetImage: "assets/images/players/FotoDelsin.jpg",
@@ -110,7 +110,7 @@ const PLAYERS = [
     traits: "Pelo castaño corto y ligeramente despeinado, cubierto generalmente por un gorro. Posee facciones marcadas, con una complexión atlética y definida. Cuenta con tatuajes en el brazo izquierdo y una cadena enrollada al derecho." 
   },
 
-  { name: "Elise Bernadeth", locationId: "junkertown", avatar: "assets/images/players/IconoElise.png", 
+  { name: "Elise Bernadeth", locationId: "trono", avatar: "assets/images/players/IconoElise.png", 
     sound: "assets/audio/player.mp3",
     color: "#0e8ed2",
     sheetImage: "assets/images/players/FotoElise.jpg",
@@ -120,7 +120,7 @@ const PLAYERS = [
     traits: "Mujer de rubios cabellos y ojos azules. Desde lejos puede verse que posee prótesis repartidas por el cuerpo, pero manteniendo su belleza característica."
   },
 
-  { name: "Amelia Shan", locationId: "bar", avatar: "assets/images/players/IconoAmelia.png",
+  { name: "Amelia Shan", locationId: "ayuntamiento", avatar: "assets/images/players/IconoAmelia.png",
     sound: "assets/audio/player.mp3",
     color: "#860cab",
     sheetImage: "assets/images/players/FotoAmelia.jpg",
@@ -134,7 +134,7 @@ const PLAYERS = [
     ]
    },
 
-  { name: "Ayax", locationId: "junkertown", avatar: "assets/images/players/IconoAyax.png",
+  { name: "Ayax", locationId: "arena", avatar: "assets/images/players/IconoAyax.png",
     sound: "assets/audio/player.mp3",
     color: "#7a0800",
     sheetImage: "assets/images/players/FotoAyax.jpg",
